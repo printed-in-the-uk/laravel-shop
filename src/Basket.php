@@ -11,6 +11,12 @@ class Basket extends Model
 {
     use Identifiable;
 
+    protected $casts = [
+        'variants_count' => 'integer',
+    ];
+
+    protected $withCount = ['variants'];
+
     public function order(): HasOne
     {
         return $this->hasOne('Jskrd\Shop\Order');
