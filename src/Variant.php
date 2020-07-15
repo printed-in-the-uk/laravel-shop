@@ -10,7 +10,8 @@ use Jskrd\Shop\Traits\Slugifiable;
 
 class Variant extends Model
 {
-    use Identifiable, Slugifiable;
+    use Identifiable;
+    use Slugifiable;
 
     protected $fillable = [
         'name',

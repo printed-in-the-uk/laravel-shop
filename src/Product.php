@@ -10,7 +10,8 @@ use Jskrd\Shop\Traits\Slugifiable;
 
 class Product extends Model
 {
-    use Identifiable, Slugifiable;
+    use Identifiable;
+    use Slugifiable;
 
     protected $fillable = [
         'name',
