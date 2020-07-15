@@ -17,6 +17,17 @@ class Basket extends Model
 
     protected $withCount = ['variants'];
 
+    public function getSubtotalAttribute(): int
+    {
+        $subtotal = 0;
+
+        foreach ($this->variants as $variant) {
+            $subtotal += $variant->pivot->price * $variant->pivot->quantity;
+        }
+
+        return $subtotal;
+    }
+
     public function order(): HasOne
     {
         return $this->hasOne('Jskrd\Shop\Order');

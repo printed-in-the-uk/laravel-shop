@@ -40,6 +40,27 @@ class BasketTest extends TestCase
         $this->assertSame(5, $basket->variants_count);
     }
 
+    public function testGetSubtotalAttribute(): void
+    {
+        $variants = factory(Variant::class, 2)->create();
+
+        $basket = factory(Basket::class)->create();
+        $basket->variants()->attach([
+            $variants[0]->id => [
+                'quantity' => 3,
+                'price' => 8612,
+                'delivery_cost' => 967,
+            ],
+            $variants[1]->id => [
+                'quantity' => 1,
+                'price' => 3110,
+                'delivery_cost' => 143,
+            ],
+        ]);
+
+        $this->assertSame(28946, $basket->subtotal);
+    }
+
     public function testOrder(): void
     {
         $order = factory(Order::class)->make();
