@@ -12,7 +12,7 @@ class ZoneTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIdentifiable()
+    public function testIdentifiable(): void
     {
         $uuidPattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/';
 
@@ -22,7 +22,7 @@ class ZoneTest extends TestCase
         $this->assertFalse($zone->incrementing);
     }
 
-    public function testCountries()
+    public function testCountries(): void
     {
         $country = factory(Country::class)->make();
 
@@ -32,7 +32,7 @@ class ZoneTest extends TestCase
         $this->assertSame($country->id, $zone->countries[0]->id);
     }
 
-    public function testVariants()
+    public function testVariants(): void
     {
         $variant = factory(Variant::class)->create();
 

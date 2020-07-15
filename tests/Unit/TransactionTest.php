@@ -12,7 +12,7 @@ class TransactionTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIdentifiable()
+    public function testIdentifiable(): void
     {
         $uuidPattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/';
 
@@ -22,7 +22,7 @@ class TransactionTest extends TestCase
         $this->assertFalse($transaction->incrementing);
     }
 
-    public function testOrder()
+    public function testOrder(): void
     {
         $order = factory(Order::class)->create();
 
@@ -32,7 +32,7 @@ class TransactionTest extends TestCase
         $this->assertSame($order->id, $transaction->order->id);
     }
 
-    public function testTransactionable()
+    public function testTransactionable(): void
     {
         $stripePaymentIntent = factory(StripePaymentIntent::class)->create();
 

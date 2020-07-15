@@ -12,7 +12,7 @@ class ProductTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIdentifiable()
+    public function testIdentifiable(): void
     {
         $uuidPattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/';
 
@@ -22,7 +22,7 @@ class ProductTest extends TestCase
         $this->assertFalse($product->incrementing);
     }
 
-    public function testSlugifiable()
+    public function testSlugifiable(): void
     {
         $product = factory(Product::class)->create(['name' => 'Notebook']);
 
@@ -33,7 +33,7 @@ class ProductTest extends TestCase
         $this->assertSame('photo-book', $product->slug);
     }
 
-    public function testImages()
+    public function testImages(): void
     {
         $image = factory(Image::class)->create();
 
@@ -44,7 +44,7 @@ class ProductTest extends TestCase
         $this->assertSame(9, $product->images[0]->pivot->position);
     }
 
-    public function testVariants()
+    public function testVariants(): void
     {
         $variant = factory(Variant::class)->make();
 

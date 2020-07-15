@@ -11,7 +11,7 @@ class AddressTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIdentifiable()
+    public function testIdentifiable(): void
     {
         $uuidPattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/';
 
@@ -21,7 +21,7 @@ class AddressTest extends TestCase
         $this->assertFalse($address->incrementing);
     }
 
-    public function testOrderBilling()
+    public function testOrderBilling(): void
     {
         $order = factory(Order::class)->make();
 
@@ -31,7 +31,7 @@ class AddressTest extends TestCase
         $this->assertSame($order->id, $address->orderBilling->id);
     }
 
-    public function testOrderDelivery()
+    public function testOrderDelivery(): void
     {
         $order = factory(Order::class)->make();
 

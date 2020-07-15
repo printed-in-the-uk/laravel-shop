@@ -11,7 +11,7 @@ class PaypalPaymentTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testTransaction()
+    public function testTransaction(): void
     {
         $transaction = factory(Transaction::class)->make();
 

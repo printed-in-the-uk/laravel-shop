@@ -13,7 +13,7 @@ class OrderTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIdentifiable()
+    public function testIdentifiable(): void
     {
         $uuidPattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/';
 
@@ -23,7 +23,7 @@ class OrderTest extends TestCase
         $this->assertFalse($order->incrementing);
     }
 
-    public function testBasket()
+    public function testBasket(): void
     {
         $basket = factory(Basket::class)->create();
 
@@ -33,7 +33,7 @@ class OrderTest extends TestCase
         $this->assertSame($basket->id, $order->basket->id);
     }
 
-    public function testBillingAddress()
+    public function testBillingAddress(): void
     {
         $billingAddress = factory(Address::class)->create();
 
@@ -43,7 +43,7 @@ class OrderTest extends TestCase
         $this->assertSame($billingAddress->id, $order->billingAddress->id);
     }
 
-    public function testDeliveryAddress()
+    public function testDeliveryAddress(): void
     {
         $deliveryAddress = factory(Address::class)->create();
 
@@ -53,7 +53,7 @@ class OrderTest extends TestCase
         $this->assertSame($deliveryAddress->id, $order->deliveryAddress->id);
     }
 
-    public function testTransactions()
+    public function testTransactions(): void
     {
         $transaction = factory(Transaction::class)->make();
 
