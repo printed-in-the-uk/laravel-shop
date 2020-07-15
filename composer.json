@@ -1,0 +1,30 @@
+{
+    "name": "jskrd/laravel-shop",
+    "description": "Shop API for Laravel",
+    "keywords": ["laravel", "shop"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jskrd\\Shop\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jskrd\\Shop\\ShopServiceProvider"
+            ]
+        }
+    }
+}
