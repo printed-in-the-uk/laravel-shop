@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ShopServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->loadMigrations();
 
@@ -15,12 +15,12 @@ class ShopServiceProvider extends ServiceProvider
         ]);
     }
 
-    public function register()
+    public function register(): void
     {
         //
     }
 
-    private function loadMigrations()
+    private function loadMigrations(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
