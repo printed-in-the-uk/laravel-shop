@@ -8,20 +8,12 @@ class ShopServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadMigrations();
-
-        $this->publishes([
-            __DIR__ . '/../database/factories/' => database_path('factories'),
-        ]);
+        $this->loadFactoriesFrom(__DIR__ . '/../database/factories');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     public function register(): void
     {
         //
-    }
-
-    private function loadMigrations(): void
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 }
