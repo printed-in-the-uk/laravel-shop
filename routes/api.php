@@ -6,4 +6,7 @@ Route::middleware('api')
     ->group(function () {
         Route::apiResource('baskets', 'BasketController')
             ->only(['store', 'show']);
+
+        Route::apiResource('baskets.variants', 'BasketVariantController')
+            ->only(['index', 'store', 'update', 'destroy']);
     });
