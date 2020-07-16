@@ -13,7 +13,7 @@ class CreateBasketVariantTable extends Migration
             $table->uuid('variant_id');
             $table->unsignedInteger('quantity');
             $table->unsignedInteger('price');
-            $table->unsignedInteger('delivery_cost');
+            $table->unsignedInteger('delivery_cost')->nullable();
             $table->timestamps();
 
             $table->primary(['basket_id', 'variant_id']);
