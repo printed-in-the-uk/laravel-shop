@@ -29,6 +29,7 @@ class BasketTest extends TestCase
         $basket = factory(Basket::class)->create();
         foreach ($variants as $variant) {
             $basket->variants()->attach($variant, [
+                'customizations' => [],
                 'quantity' => 0,
                 'price' => 0,
                 'delivery_cost' => 0,
@@ -47,11 +48,13 @@ class BasketTest extends TestCase
         $basket = factory(Basket::class)->create();
         $basket->variants()->attach([
             $variants[0]->id => [
+                'customizations' => [],
                 'quantity' => 3,
                 'price' => 8612,
                 'delivery_cost' => 967,
             ],
             $variants[1]->id => [
+                'customizations' => [],
                 'quantity' => 1,
                 'price' => 3110,
                 'delivery_cost' => 143,
@@ -77,6 +80,7 @@ class BasketTest extends TestCase
 
         $basket = factory(Basket::class)->create();
         $basket->variants()->attach($variant, [
+            'customizations' => [],
             'quantity' => 7,
             'price' => 6813,
             'delivery_cost' => 457,

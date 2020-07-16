@@ -42,6 +42,7 @@ class VariantTest extends TestCase
 
         $variant = factory(Variant::class)->create();
         $variant->baskets()->attach($basket, [
+            'customizations' => [],
             'quantity' => 9,
             'price' => 2897,
             'delivery_cost' => 888,

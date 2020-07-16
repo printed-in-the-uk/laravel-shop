@@ -11,12 +11,13 @@ class CreateBasketVariantTable extends Migration
         Schema::create('basket_variant', function (Blueprint $table) {
             $table->uuid('basket_id');
             $table->uuid('variant_id');
+            $table->json('customizations');
             $table->unsignedInteger('quantity');
             $table->unsignedInteger('price');
             $table->unsignedInteger('delivery_cost')->nullable();
             $table->timestamps();
 
-            $table->primary(['basket_id', 'variant_id']);
+            $table->primary(['basket_id', 'variant_id', 'customizations']);
 
             $table
                 ->foreign('basket_id')
