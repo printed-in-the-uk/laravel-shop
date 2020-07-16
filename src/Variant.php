@@ -13,6 +13,12 @@ class Variant extends Model
     use Identifiable;
     use Slugifiable;
 
+    protected $casts = [
+        'price' => 'integer',
+        'delivery_cost' => 'integer',
+        'stock' => 'integer',
+    ];
+
     protected $fillable = [
         'name',
         'price',
