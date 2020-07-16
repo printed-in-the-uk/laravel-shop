@@ -10,6 +10,12 @@ class Image extends Model
 {
     use Identifiable;
 
+    protected $casts = [
+        'width' => 'integer',
+        'height' => 'integer',
+        'size' => 'integer',
+    ];
+
     protected $fillable = [
         'path',
         'width',
