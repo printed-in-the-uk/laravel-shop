@@ -1,6 +1,6 @@
 {
     "name": "jskrd/laravel-shop",
-    "description": "Shop API for Laravel",
+    "description": "A package for Laravel based projects providing a shop web API.",
     "keywords": ["laravel", "shop"],
     "license": "MIT",
     "require": {
