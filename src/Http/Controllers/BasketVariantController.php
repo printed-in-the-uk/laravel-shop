@@ -7,6 +7,7 @@ use Jskrd\Shop\Basket;
 use Jskrd\Shop\Http\Controllers\Controller;
 use Jskrd\Shop\Http\Requests\StoreBasketVariant;
 use Jskrd\Shop\Http\Requests\UpdateBasketVariant;
+use Jskrd\Shop\Http\Resources\BasketVariant as BasketVariantResource;
 use Jskrd\Shop\Http\Resources\Variant as VariantResource;
 use Jskrd\Shop\Variant;
 
@@ -41,7 +42,9 @@ class BasketVariantController extends Controller
 
         $basket->variants()->updateExistingPivot($variant, $validated);
 
-        return VariantResource::collection($basket->variants);
+        $basketVariant = $basket->variants()->find($variant->id)->pivot;
+
+        return new BasketVariantResource($basketVariant);
     }
 
     public function destroy(Basket $basket, Variant $variant): JsonResource

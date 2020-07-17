@@ -220,29 +220,14 @@ class UpdateTest extends TestCase
             ->assertStatus(200)
             ->assertJsonFragment([
                 'data' => [
-                    [
-                        'id' => $variant->id,
-                        'name' => $variant->name,
-                        'slug' => $variant->slug,
-                        'price' => $variant->price,
-                        'delivery_cost' => $variant->delivery_cost,
-                        'stock' => $variant->stock,
-                        'option1' => $variant->option1,
-                        'option2' => $variant->option2,
-                        'option3' => $variant->option3,
-                        'created_at' => $variant->created_at->toIso8601String(),
-                        'updated_at' => $variant->updated_at->toIso8601String(),
-                        'pivot' => [
-                            'basket_id' => $pivot->basket_id,
-                            'variant_id' => $pivot->variant_id,
-                            'customizations' => '{"name": "Bob"}',
-                            'quantity' => 5,
-                            'price' => 7298,
-                            'delivery_cost' => null,
-                            'created_at' => $pivot->created_at->toIso8601String(),
-                            'updated_at' => $pivot->updated_at->toIso8601String(),
-                        ],
-                    ],
+                    'basket_id' => $pivot->basket_id,
+                    'variant_id' => $pivot->variant_id,
+                    'customizations' => '{"name": "Bob"}',
+                    'quantity' => 5,
+                    'price' => 7298,
+                    'delivery_cost' => null,
+                    'created_at' => $pivot->created_at->toIso8601String(),
+                    'updated_at' => $pivot->updated_at->toIso8601String(),
                 ],
             ]);
     }
