@@ -20,4 +20,7 @@ Route::middleware('api')
 
         Route::apiResource('variants', 'VariantController')
             ->only(['show']);
+
+        Route::apiResource('variants.images', 'VariantImageController')
+            ->only(['index']);
     });

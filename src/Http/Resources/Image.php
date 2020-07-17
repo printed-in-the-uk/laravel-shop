@@ -24,6 +24,12 @@ class Image extends JsonResource
                     return new ImageProductResource($this->pivot);
                 }
             ),
+            'image_variant' => $this->whenPivotLoaded(
+                'image_variant',
+                function () {
+                    return new ImageVariantResource($this->pivot);
+                }
+            ),
         ];
     }
 }
