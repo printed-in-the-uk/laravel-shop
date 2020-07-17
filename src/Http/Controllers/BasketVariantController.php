@@ -45,6 +45,13 @@ class BasketVariantController extends Controller
         );
     }
 
+    public function show(Basket $basket, Variant $variant): JsonResource
+    {
+        $basketVariant = $basket->variants()->find($variant)->pivot;
+
+        return new BasketVariantResource($basketVariant);
+    }
+
     public function update(
         Basket $basket,
         Variant $variant,

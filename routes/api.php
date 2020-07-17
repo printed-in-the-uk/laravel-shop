@@ -7,6 +7,5 @@ Route::middleware('api')
         Route::apiResource('baskets', 'BasketController')
             ->only(['store', 'show']);
 
-        Route::apiResource('baskets.variants', 'BasketVariantController')
-            ->only(['index', 'store', 'update', 'destroy']);
+        Route::apiResource('baskets.variants', 'BasketVariantController');
     });
