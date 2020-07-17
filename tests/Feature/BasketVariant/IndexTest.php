@@ -61,6 +61,7 @@ class IndexTest extends TestCase
                         'option1' => $variant->option1,
                         'option2' => $variant->option2,
                         'option3' => $variant->option3,
+                        'product_id' => $variant->product_id,
                         'created_at' => $variant->created_at->toIso8601String(),
                         'updated_at' => $variant->updated_at->toIso8601String(),
                     ],
