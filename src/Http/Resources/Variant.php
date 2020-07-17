@@ -3,6 +3,7 @@
 namespace Jskrd\Shop\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Jskrd\Shop\Http\Resources\BasketVariant as BasketVariantResource;
 
 class Variant extends JsonResource
 {
@@ -21,6 +22,12 @@ class Variant extends JsonResource
             'product_id' => $this->product_id,
             'created_at' => $this->created_at->toIso8601String(),
             'updated_at' => $this->updated_at->toIso8601String(),
+            'basket_variant' => $this->whenPivotLoaded(
+                'basket_variant',
+                function () {
+                    return new BasketVariantResource($this->pivot);
+                }
+            ),
         ];
     }
 }
