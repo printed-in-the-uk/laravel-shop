@@ -213,20 +213,32 @@ class StoreTest extends TestCase
             'quantity' => 2,
         ]);
 
-        $pivot = $basket->variants[0]->pivot;
-
         $response
             ->assertStatus(200)
             ->assertJsonFragment([
                 'data' => [
-                    'basket_id' => $pivot->basket_id,
-                    'variant_id' => $pivot->variant_id,
-                    'customizations' => '{"name": "Alice"}',
-                    'quantity' => 2,
-                    'price' => 7298,
-                    'delivery_cost' => null,
-                    'created_at' => $pivot->created_at->toIso8601String(),
-                    'updated_at' => $pivot->updated_at->toIso8601String(),
+                    'id' => $basket->variants[0]->id,
+                    'name' => $basket->variants[0]->name,
+                    'slug' => $basket->variants[0]->slug,
+                    'price' => $basket->variants[0]->price,
+                    'delivery_cost' => $basket->variants[0]->delivery_cost,
+                    'stock' => $basket->variants[0]->stock,
+                    'option1' => $basket->variants[0]->option1,
+                    'option2' => $basket->variants[0]->option2,
+                    'option3' => $basket->variants[0]->option3,
+                    'product_id' => $basket->variants[0]->product_id,
+                    'created_at' => $basket->variants[0]->created_at->toIso8601String(),
+                    'updated_at' => $basket->variants[0]->updated_at->toIso8601String(),
+                    'basket_variant' => [
+                        'basket_id' => $basket->variants[0]->pivot->basket_id,
+                        'variant_id' => $variant->id,
+                        'customizations' => '{"name": "Alice"}',
+                        'quantity' => 2,
+                        'price' => $variant->price,
+                        'delivery_cost' => null,
+                        'created_at' => $basket->variants[0]->pivot->created_at->toIso8601String(),
+                        'updated_at' => $basket->variants[0]->pivot->updated_at->toIso8601String(),
+                    ],
                 ],
             ]);
     }

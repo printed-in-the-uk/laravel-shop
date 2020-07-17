@@ -7,7 +7,6 @@ use Jskrd\Shop\Basket;
 use Jskrd\Shop\Http\Controllers\Controller;
 use Jskrd\Shop\Http\Requests\StoreBasketVariant;
 use Jskrd\Shop\Http\Requests\UpdateBasketVariant;
-use Jskrd\Shop\Http\Resources\BasketVariant as BasketVariantResource;
 use Jskrd\Shop\Http\Resources\Variant as VariantResource;
 use Jskrd\Shop\Variant;
 
@@ -40,16 +39,12 @@ class BasketVariantController extends Controller
             'price' => $variant->price,
         ]));
 
-        return new BasketVariantResource(
-            $basket->variants()->find($variant)->pivot
-        );
+        return new VariantResource($basket->variants()->find($variant));
     }
 
     public function show(Basket $basket, Variant $variant): JsonResource
     {
-        $basketVariant = $basket->variants()->find($variant)->pivot;
-
-        return new BasketVariantResource($basketVariant);
+        return new VariantResource($basket->variants()->find($variant));
     }
 
     public function update(
@@ -63,9 +58,7 @@ class BasketVariantController extends Controller
 
         $basket->variants()->updateExistingPivot($variant, $validated);
 
-        return new BasketVariantResource(
-            $basket->variants()->find($variant)->pivot
-        );
+        return new VariantResource($basket->variants()->find($variant));
     }
 
     public function destroy(Basket $basket, Variant $variant): JsonResource
