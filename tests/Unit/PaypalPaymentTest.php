@@ -3,21 +3,21 @@
 namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Jskrd\Shop\Order;
 use Jskrd\Shop\PaypalPayment;
-use Jskrd\Shop\Transaction;
 use Tests\TestCase;
 
 class PaypalPaymentTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testTransaction(): void
+    public function testOrder(): void
     {
-        $transaction = factory(Transaction::class)->make();
+        $order = factory(Order::class)->make();
 
         $paypalPayment = factory(PaypalPayment::class)->create();
-        $paypalPayment->transaction()->save($transaction);
+        $paypalPayment->order()->save($order);
 
-        $this->assertSame($transaction->id, $paypalPayment->transaction->id);
+        $this->assertSame($order->id, $paypalPayment->order->id);
     }
 }

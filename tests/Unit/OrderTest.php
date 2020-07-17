@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Jskrd\Shop\Address;
 use Jskrd\Shop\Basket;
 use Jskrd\Shop\Order;
-use Jskrd\Shop\Transaction;
+use Jskrd\Shop\StripePaymentIntent;
 use Tests\TestCase;
 
 class OrderTest extends TestCase
@@ -53,13 +53,16 @@ class OrderTest extends TestCase
         $this->assertSame($deliveryAddress->id, $order->deliveryAddress->id);
     }
 
-    public function testTransactions(): void
+    public function testPaymentable(): void
     {
-        $transaction = factory(Transaction::class)->make();
+        $stripePaymentIntent = factory(StripePaymentIntent::class)->create();
 
         $order = factory(Order::class)->create();
-        $order->transactions()->save($transaction);
+        $order->paymentable()->associate($stripePaymentIntent);
 
-        $this->assertSame($transaction->id, $order->transactions[0]->id);
+        $this->assertSame(
+            $stripePaymentIntent->id,
+            $order->paymentable->id
+        );
     }
 }

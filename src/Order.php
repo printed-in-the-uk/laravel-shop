@@ -4,7 +4,7 @@ namespace Jskrd\Shop;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Jskrd\Shop\Traits\Identifiable;
 
 class Order extends Model
@@ -26,8 +26,8 @@ class Order extends Model
         return $this->belongsTo('Jskrd\Shop\Address');
     }
 
-    public function transactions(): HasMany
+    public function paymentable(): MorphTo
     {
-        return $this->hasMany('Jskrd\Shop\Transaction');
+        return $this->morphTo();
     }
 }

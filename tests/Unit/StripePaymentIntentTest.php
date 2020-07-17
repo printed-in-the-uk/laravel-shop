@@ -3,24 +3,24 @@
 namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Jskrd\Shop\Order;
 use Jskrd\Shop\StripePaymentIntent;
-use Jskrd\Shop\Transaction;
 use Tests\TestCase;
 
 class StripePaymentIntentTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testTransaction(): void
+    public function testOrder(): void
     {
-        $transaction = factory(Transaction::class)->make();
+        $order = factory(Order::class)->make();
 
         $stripePaymentIntent = factory(StripePaymentIntent::class)->create();
-        $stripePaymentIntent->transaction()->save($transaction);
+        $stripePaymentIntent->order()->save($order);
 
         $this->assertSame(
-            $transaction->id,
-            $stripePaymentIntent->transaction->id
+            $order->id,
+            $stripePaymentIntent->order->id
         );
     }
 }

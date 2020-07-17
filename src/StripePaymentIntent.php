@@ -14,8 +14,8 @@ class StripePaymentIntent extends Model
 
     protected $keyType = 'string';
 
-    public function transaction()
+    public function order()
     {
-        return $this->morphOne('Jskrd\Shop\Transaction', 'transactionable');
+        return $this->morphOne('Jskrd\Shop\Order', 'paymentable');
     }
 }
