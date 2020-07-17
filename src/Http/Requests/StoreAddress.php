@@ -9,7 +9,7 @@ class StoreAddress extends FormRequest
 {
     public function rules()
     {
-        $countries = array_column((new ISO3166)->all(), 'alpha2');
+        $countries = array_column((new ISO3166())->all(), 'alpha2');
 
         return [
             'name' => 'required|string|max:255',
