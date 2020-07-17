@@ -40,7 +40,9 @@ class BasketVariantController extends Controller
             'price' => $variant->price,
         ]));
 
-        return VariantResource::collection($basket->variants);
+        return new BasketVariantResource(
+            $basket->variants()->find($variant)->pivot
+        );
     }
 
     public function update(
