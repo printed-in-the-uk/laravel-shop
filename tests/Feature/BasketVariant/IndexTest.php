@@ -45,8 +45,6 @@ class IndexTest extends TestCase
 
         $response = $this->getJson(route('baskets.variants.index', $basket));
 
-        $pivot = $basket->variants[0]->pivot;
-
         $response
             ->assertStatus(200)
             ->assertJsonFragment([
