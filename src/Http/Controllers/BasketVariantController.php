@@ -24,6 +24,16 @@ class BasketVariantController extends Controller
     ): JsonResource {
         $validated = $request->validated();
 
+        abort_if(
+            $basket->variants->contains(function ($variant) use ($validated) {
+                $pivot = $variant->pivot;
+
+                return $pivot->variant_id === $validated['variant_id'] &&
+                    $pivot->customizations === $validated['customizations'];
+            }),
+            409
+        );
+
         $variant = Variant::find($validated['variant_id']);
 
         $basket->variants()->attach($variant, array_merge($validated, [

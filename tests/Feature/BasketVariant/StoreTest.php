@@ -181,6 +181,26 @@ class StoreTest extends TestCase
             ]);
     }
 
+    public function testVariantAlreadyAttached(): void
+    {
+        $variant = factory(Variant::class)->create();
+
+        $basket = factory(Basket::class)->create();
+        $basket->variants()->attach($variant, [
+            'customizations' => '{}',
+            'quantity' => 1,
+            'price' => 0,
+        ]);
+
+        $response = $this->postJson(route('baskets.variants.store', $basket), [
+            'variant_id' => $variant->id,
+            'customizations' => '{}',
+            'quantity' => 1,
+        ]);
+
+        $response->assertStatus(409);
+    }
+
     public function testStored(): void
     {
         $basket = factory(Basket::class)->create();
