@@ -13,7 +13,12 @@ class ShowTest extends TestCase
 
     public function testRoute(): void
     {
-        $this->assertSame(url('/shop-api/baskets'), route('baskets.store'));
+        $id = Str::uuid();
+
+        $this->assertSame(
+            url('/shop-api/baskets/' . $id),
+            route('baskets.show', $id)
+        );
     }
 
     public function testNotFound(): void
