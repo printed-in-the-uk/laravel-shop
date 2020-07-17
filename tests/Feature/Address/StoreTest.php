@@ -280,6 +280,19 @@ class StoreTest extends TestCase
             ]);
     }
 
+    public function testCountryIn(): void
+    {
+        $response = $this->postJson(route('addresses.store'), [
+            'country' => 'AA',
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'country' => 'The selected country is invalid.'
+            ]);
+    }
+
     public function testEmailNullable(): void
     {
         $response = $this->postJson(route('addresses.store'), [
