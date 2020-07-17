@@ -47,14 +47,8 @@ class UpdateTest extends TestCase
 
     public function testCustomizationsRequired(): void
     {
-        $variant = factory(Variant::class)->create();
-
         $basket = factory(Basket::class)->create();
-        $basket->variants()->attach($variant, [
-            'customizations' => '{}',
-            'quantity' => 0,
-            'price' => 0,
-        ]);
+        $variant = factory(Variant::class)->create();
 
         $response = $this->putJson(
             route('baskets.variants.update', [$basket, $variant]),
@@ -72,14 +66,8 @@ class UpdateTest extends TestCase
 
     public function testCustomizationsString(): void
     {
-        $variant = factory(Variant::class)->create();
-
         $basket = factory(Basket::class)->create();
-        $basket->variants()->attach($variant, [
-            'customizations' => '{}',
-            'quantity' => 0,
-            'price' => 0,
-        ]);
+        $variant = factory(Variant::class)->create();
 
         $response = $this->putJson(
             route('baskets.variants.update', [$basket, $variant]),
@@ -97,14 +85,8 @@ class UpdateTest extends TestCase
 
     public function testCustomizationsJson(): void
     {
-        $variant = factory(Variant::class)->create();
-
         $basket = factory(Basket::class)->create();
-        $basket->variants()->attach($variant, [
-            'customizations' => '{}',
-            'quantity' => 0,
-            'price' => 0,
-        ]);
+        $variant = factory(Variant::class)->create();
 
         $response = $this->putJson(
             route('baskets.variants.update', [$basket, $variant]),
@@ -122,14 +104,8 @@ class UpdateTest extends TestCase
 
     public function testQuantityRequired(): void
     {
-        $variant = factory(Variant::class)->create();
-
         $basket = factory(Basket::class)->create();
-        $basket->variants()->attach($variant, [
-            'customizations' => '{}',
-            'quantity' => 0,
-            'price' => 0,
-        ]);
+        $variant = factory(Variant::class)->create();
 
         $response = $this->putJson(
             route('baskets.variants.update', [$basket, $variant]),
@@ -147,14 +123,8 @@ class UpdateTest extends TestCase
 
     public function testQuantityInteger(): void
     {
-        $variant = factory(Variant::class)->create();
-
         $basket = factory(Basket::class)->create();
-        $basket->variants()->attach($variant, [
-            'customizations' => '{}',
-            'quantity' => 0,
-            'price' => 0,
-        ]);
+        $variant = factory(Variant::class)->create();
 
         $response = $this->putJson(
             route('baskets.variants.update', [$basket, $variant]),
@@ -172,14 +142,8 @@ class UpdateTest extends TestCase
 
     public function testQuantityBetween(): void
     {
-        $variant = factory(Variant::class)->create();
-
         $basket = factory(Basket::class)->create();
-        $basket->variants()->attach($variant, [
-            'customizations' => '{}',
-            'quantity' => 0,
-            'price' => 0,
-        ]);
+        $variant = factory(Variant::class)->create();
 
         $response = $this->putJson(
             route('baskets.variants.update', [$basket, $variant]),
@@ -193,6 +157,22 @@ class UpdateTest extends TestCase
             ->assertJsonValidationErrors([
                 'quantity' => 'The quantity must be between 1 and 4294967295.'
             ]);
+    }
+
+    public function testNotAttached(): void
+    {
+        $basket = factory(Basket::class)->create();
+        $variant = factory(Variant::class)->create();
+
+        $response = $this->putJson(
+            route('baskets.variants.update', [$basket, $variant]),
+            [
+                'customizations' => '{"name": "Bob"}',
+                'quantity' => 5,
+            ]
+        );
+
+        $response->assertNotFound();
     }
 
     public function testUpdated(): void

@@ -40,11 +40,13 @@ class BasketVariantController extends Controller
     ): JsonResource {
         $validated = $request->validated();
 
+        abort_unless($basket->variants->contains($variant), 404);
+
         $basket->variants()->updateExistingPivot($variant, $validated);
 
-        $basketVariant = $basket->variants()->find($variant->id)->pivot;
-
-        return new BasketVariantResource($basketVariant);
+        return new BasketVariantResource(
+            $basket->variants()->find($variant)->pivot
+        );
     }
 
     public function destroy(Basket $basket, Variant $variant): JsonResource
