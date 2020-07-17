@@ -21,9 +21,6 @@ class Variant extends JsonResource
             'option3' => $this->option3,
             'created_at' => $this->created_at->toIso8601String(),
             'updated_at' => $this->updated_at->toIso8601String(),
-            'pivot' => $this->whenPivotLoaded('basket_variant', function () {
-                return new BasketVariantResource($this->pivot);
-            }),
         ];
     }
 }

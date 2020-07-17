@@ -63,16 +63,6 @@ class IndexTest extends TestCase
                         'option3' => $variant->option3,
                         'created_at' => $variant->created_at->toIso8601String(),
                         'updated_at' => $variant->updated_at->toIso8601String(),
-                        'pivot' => [
-                            'basket_id' => $pivot->basket_id,
-                            'variant_id' => $pivot->variant_id,
-                            'customizations' => $pivot->customizations,
-                            'quantity' => $pivot->quantity,
-                            'price' => $pivot->price,
-                            'delivery_cost' => $pivot->delivery_cost,
-                            'created_at' => $pivot->created_at->toIso8601String(),
-                            'updated_at' => $pivot->updated_at->toIso8601String(),
-                        ],
                     ],
                 ],
             ]);
