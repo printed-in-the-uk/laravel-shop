@@ -3,7 +3,6 @@
 namespace Jskrd\Shop\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Jskrd\Shop\Http\Resources\BasketVariant as BasketVariantResource;
 
 class Variant extends JsonResource
 {
