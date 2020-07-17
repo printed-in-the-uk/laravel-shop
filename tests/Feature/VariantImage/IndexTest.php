@@ -48,6 +48,8 @@ class IndexTest extends TestCase
                         'width' => $variant->images[0]->width,
                         'height' => $variant->images[0]->height,
                         'size' => $variant->images[0]->size,
+                        'created_at' => $variant->images[0]->created_at->toIso8601String(),
+                        'updated_at' => $variant->images[0]->updated_at->toIso8601String(),
                         'image_variant' => [
                             'image_id' => $variant->images[0]->pivot->image_id,
                             'variant_id' => $variant->images[0]->pivot->variant_id,
@@ -55,8 +57,6 @@ class IndexTest extends TestCase
                             'created_at' => $variant->images[0]->pivot->created_at->toIso8601String(),
                             'updated_at' => $variant->images[0]->pivot->updated_at->toIso8601String(),
                         ],
-                        'created_at' => $variant->images[0]->created_at->toIso8601String(),
-                        'updated_at' => $variant->images[0]->updated_at->toIso8601String(),
                     ],
                 ],
             ]);
