@@ -11,4 +11,7 @@ Route::middleware('api')
             ->only(['store', 'show']);
 
         Route::apiResource('baskets.variants', 'BasketVariantController');
+
+        Route::apiResource('products', 'ProductController')
+            ->only(['index', 'show']);
     });
