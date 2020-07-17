@@ -45,6 +45,22 @@ class DestroyTest extends TestCase
         $response->assertNotFound();
     }
 
+    public function testNotAttached(): void
+    {
+        $basket = factory(Basket::class)->create();
+        $variant = factory(Variant::class)->create();
+
+        $response = $this->deleteJson(
+            route('baskets.variants.destroy', [$basket, $variant])
+        );
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                'data' => [],
+            ]);
+    }
+
     public function testDestroyed(): void
     {
         $variant = factory(Variant::class)->create(['price' => 2182]);
