@@ -15,6 +15,9 @@ Route::middleware('api')
         Route::apiResource('products', 'ProductController')
             ->only(['index', 'show']);
 
+        Route::apiResource('products.images', 'ProductImageController')
+            ->only(['index']);
+
         Route::apiResource('variants', 'VariantController')
             ->only(['show']);
     });
