@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Jskrd\Shop\Basket;
+use Jskrd\Shop\Discount;
 use Jskrd\Shop\Image;
 use Jskrd\Shop\Product;
 use Jskrd\Shop\Variant;
@@ -50,6 +51,16 @@ class VariantTest extends TestCase
         $this->assertSame($basket->id, $variant->baskets[0]->id);
         $this->assertSame(9, $variant->baskets[0]->pivot->quantity);
         $this->assertSame(2897, $variant->baskets[0]->pivot->price);
+    }
+
+    public function testDiscounts(): void
+    {
+        $discount = factory(Discount::class)->make();
+
+        $variant = factory(Variant::class)->create();
+        $variant->discounts()->save($discount);
+
+        $this->assertSame($discount->id, $variant->discounts[0]->id);
     }
 
     public function testImages(): void

@@ -13,6 +13,7 @@ class CreateBasketsTable extends Migration
             $table->unsignedInteger('delivery_cost')->nullable();
             $table->uuid('billing_address_id')->nullable();
             $table->uuid('delivery_address_id')->nullable();
+            $table->uuid('discount_id')->nullable();
             $table->timestamps();
 
             $table
@@ -26,6 +27,13 @@ class CreateBasketsTable extends Migration
                 ->foreign('delivery_address_id')
                 ->references('id')
                 ->on('addresses')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table
+                ->foreign('discount_id')
+                ->references('id')
+                ->on('discounts')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });

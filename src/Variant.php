@@ -5,6 +5,7 @@ namespace Jskrd\Shop;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Jskrd\Shop\Traits\Identifiable;
 use Jskrd\Shop\Traits\Slugifiable;
 
@@ -39,6 +40,11 @@ class Variant extends Model
             ->using('Jskrd\Shop\BasketVariant')
             ->withPivot('customizations', 'quantity', 'price')
             ->withTimestamps();
+    }
+
+    public function discounts(): HasMany
+    {
+        return $this->hasMany('Jskrd\Shop\Discount');
     }
 
     public function images(): BelongsToMany
