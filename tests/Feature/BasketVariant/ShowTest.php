@@ -84,7 +84,6 @@ class ShowTest extends TestCase
                         'customizations' => $basket->variants[0]->pivot->customizations,
                         'quantity' => $basket->variants[0]->pivot->quantity,
                         'price' => $basket->variants[0]->pivot->price,
-                        'delivery_cost' => $basket->variants[0]->pivot->delivery_cost,
                         'created_at' => $basket->variants[0]->pivot->created_at->toIso8601String(),
                         'updated_at' => $basket->variants[0]->pivot->updated_at->toIso8601String(),
                     ],

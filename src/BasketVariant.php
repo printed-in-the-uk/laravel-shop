@@ -10,6 +10,5 @@ class BasketVariant extends Pivot
         'customizations' => 'array',
         'quantity' => 'integer',
         'price' => 'integer',
-        'delivery_cost' => 'integer',
     ];
 }

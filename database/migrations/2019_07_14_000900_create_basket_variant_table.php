@@ -14,7 +14,6 @@ class CreateBasketVariantTable extends Migration
             $table->json('customizations');
             $table->unsignedInteger('quantity');
             $table->unsignedInteger('price');
-            $table->unsignedInteger('delivery_cost')->nullable();
             $table->timestamps();
 
             $table->primary(['basket_id', 'variant_id', 'customizations']);

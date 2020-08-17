@@ -45,13 +45,11 @@ class VariantTest extends TestCase
             'customizations' => [],
             'quantity' => 9,
             'price' => 2897,
-            'delivery_cost' => 888,
         ]);
 
         $this->assertSame($basket->id, $variant->baskets[0]->id);
         $this->assertSame(9, $variant->baskets[0]->pivot->quantity);
         $this->assertSame(2897, $variant->baskets[0]->pivot->price);
-        $this->assertSame(888, $variant->baskets[0]->pivot->delivery_cost);
     }
 
     public function testImages(): void

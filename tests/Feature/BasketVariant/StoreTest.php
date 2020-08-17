@@ -237,7 +237,6 @@ class StoreTest extends TestCase
                         'customizations' => '{"name": "Alice"}',
                         'quantity' => 2,
                         'price' => $variant->price,
-                        'delivery_cost' => null,
                         'created_at' => $basket->variants[0]->pivot->created_at->toIso8601String(),
                         'updated_at' => $basket->variants[0]->pivot->updated_at->toIso8601String(),
                     ],

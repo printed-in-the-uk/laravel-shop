@@ -32,7 +32,6 @@ class BasketTest extends TestCase
                 'customizations' => [],
                 'quantity' => 0,
                 'price' => 0,
-                'delivery_cost' => 0,
             ]);
         }
 
@@ -51,13 +50,11 @@ class BasketTest extends TestCase
                 'customizations' => [],
                 'quantity' => 3,
                 'price' => 8612,
-                'delivery_cost' => 967,
             ],
             $variants[1]->id => [
                 'customizations' => [],
                 'quantity' => 1,
                 'price' => 3110,
-                'delivery_cost' => 143,
             ],
         ]);
 
@@ -83,12 +80,10 @@ class BasketTest extends TestCase
             'customizations' => [],
             'quantity' => 7,
             'price' => 6813,
-            'delivery_cost' => 457,
         ]);
 
         $this->assertSame($variant->id, $basket->variants[0]->id);
         $this->assertSame(7, $basket->variants[0]->pivot->quantity);
         $this->assertSame(6813, $basket->variants[0]->pivot->price);
-        $this->assertSame(457, $basket->variants[0]->pivot->delivery_cost);
     }
 }

@@ -37,7 +37,7 @@ class Variant extends Model
         return $this
             ->belongsToMany('Jskrd\Shop\Basket')
             ->using('Jskrd\Shop\BasketVariant')
-            ->withPivot('customizations', 'quantity', 'price', 'delivery_cost')
+            ->withPivot('customizations', 'quantity', 'price')
             ->withTimestamps();
     }
 

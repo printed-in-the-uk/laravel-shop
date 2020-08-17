@@ -38,7 +38,6 @@ class IndexTest extends TestCase
             'customizations' => ['name' => 'Alice'],
             'quantity' => 4,
             'price' => 2563,
-            'delivery_cost' => null,
         ]);
 
         $response = $this->getJson(route('baskets.variants.index', $basket));
@@ -68,7 +67,6 @@ class IndexTest extends TestCase
                             'customizations' => $basket->variants[0]->pivot->customizations,
                             'quantity' => $basket->variants[0]->pivot->quantity,
                             'price' => $basket->variants[0]->pivot->price,
-                            'delivery_cost' => $basket->variants[0]->pivot->delivery_cost,
                             'created_at' => $basket->variants[0]->pivot->created_at->toIso8601String(),
                             'updated_at' => $basket->variants[0]->pivot->updated_at->toIso8601String(),
                         ],

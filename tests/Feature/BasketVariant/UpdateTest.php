@@ -218,7 +218,6 @@ class UpdateTest extends TestCase
                         'customizations' => '{"name": "Bob"}',
                         'quantity' => 5,
                         'price' => 7298,
-                        'delivery_cost' => null,
                         'created_at' => $basket->variants[0]->pivot->created_at->toIso8601String(),
                         'updated_at' => $basket->variants[0]->pivot->updated_at->toIso8601String(),
                     ],
