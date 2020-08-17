@@ -43,6 +43,7 @@ class ShowTest extends TestCase
                     'variants_count' => $basket->variants_count,
                     'subtotal' => $basket->subtotal,
                     'delivery_cost' => $basket->delivery_cost,
+                    'discount_amount' => $basket->discount_amount,
                     'delivery_address_id' => $basket->delivery_address_id,
                     'billing_address_id' => $basket->billing_address_id,
                     'discount_id' => $basket->discount_id,

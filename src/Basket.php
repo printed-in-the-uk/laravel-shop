@@ -15,10 +15,12 @@ class Basket extends Model
     protected $casts = [
         'variants_count' => 'integer',
         'delivery_cost' => 'integer',
+        'discount_amount' => 'integer',
     ];
 
     protected $fillable = [
         'delivery_cost',
+        'discount_amount',
     ];
 
     protected $withCount = ['variants'];
