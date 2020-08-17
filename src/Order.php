@@ -16,16 +16,6 @@ class Order extends Model
         return $this->belongsTo('Jskrd\Shop\Basket');
     }
 
-    public function billingAddress(): BelongsTo
-    {
-        return $this->belongsTo('Jskrd\Shop\Address');
-    }
-
-    public function deliveryAddress(): BelongsTo
-    {
-        return $this->belongsTo('Jskrd\Shop\Address');
-    }
-
     public function paymentable(): MorphTo
     {
         return $this->morphTo();

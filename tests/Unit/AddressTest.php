@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Jskrd\Shop\Address;
-use Jskrd\Shop\Order;
 use Tests\TestCase;
 
 class AddressTest extends TestCase
@@ -19,25 +18,5 @@ class AddressTest extends TestCase
 
         $this->assertRegExp($uuidPattern, $address->id);
         $this->assertFalse($address->incrementing);
-    }
-
-    public function testOrderBilling(): void
-    {
-        $order = factory(Order::class)->make();
-
-        $address = factory(Address::class)->create();
-        $address->orderBilling()->save($order);
-
-        $this->assertSame($order->id, $address->orderBilling->id);
-    }
-
-    public function testOrderDelivery(): void
-    {
-        $order = factory(Order::class)->make();
-
-        $address = factory(Address::class)->create();
-        $address->orderDelivery()->save($order);
-
-        $this->assertSame($order->id, $address->orderDelivery->id);
     }
 }

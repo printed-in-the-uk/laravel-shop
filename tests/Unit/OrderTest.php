@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Jskrd\Shop\Address;
 use Jskrd\Shop\Basket;
 use Jskrd\Shop\Order;
 use Jskrd\Shop\StripePaymentIntent;
@@ -31,26 +30,6 @@ class OrderTest extends TestCase
         $order->basket()->associate($basket);
 
         $this->assertSame($basket->id, $order->basket->id);
-    }
-
-    public function testBillingAddress(): void
-    {
-        $billingAddress = factory(Address::class)->create();
-
-        $order = factory(Order::class)->create();
-        $order->billingAddress()->associate($billingAddress);
-
-        $this->assertSame($billingAddress->id, $order->billingAddress->id);
-    }
-
-    public function testDeliveryAddress(): void
-    {
-        $deliveryAddress = factory(Address::class)->create();
-
-        $order = factory(Order::class)->create();
-        $order->deliveryAddress()->associate($deliveryAddress);
-
-        $this->assertSame($deliveryAddress->id, $order->deliveryAddress->id);
     }
 
     public function testPaymentable(): void

@@ -21,14 +21,4 @@ class Address extends Model
         'email',
         'phone',
     ];
-
-    public function orderBilling(): HasOne
-    {
-        return $this->hasOne('Jskrd\Shop\Order', 'billing_address_id');
-    }
-
-    public function orderDelivery(): HasOne
-    {
-        return $this->hasOne('Jskrd\Shop\Order', 'delivery_address_id');
-    }
 }

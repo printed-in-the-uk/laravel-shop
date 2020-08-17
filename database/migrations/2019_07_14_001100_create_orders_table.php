@@ -11,8 +11,6 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('basket_id');
-            $table->uuid('billing_address_id');
-            $table->uuid('delivery_address_id');
             $table->string('paymentable_id')->unique();
             $table->string('paymentable_type');
             $table->timestamps();
@@ -21,20 +19,6 @@ class CreateOrdersTable extends Migration
                 ->foreign('basket_id')
                 ->references('id')
                 ->on('baskets')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
-
-            $table
-                ->foreign('billing_address_id')
-                ->references('id')
-                ->on('addresses')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
-
-            $table
-                ->foreign('delivery_address_id')
-                ->references('id')
-                ->on('addresses')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
