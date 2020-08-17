@@ -50,6 +50,7 @@ class IndexTest extends TestCase
                         'name' => $product->variants[0]->name,
                         'slug' => $product->variants[0]->slug,
                         'price' => $product->variants[0]->price,
+                        'original_price' => $product->variants[0]->original_price,
                         'delivery_cost' => $product->variants[0]->delivery_cost,
                         'stock' => $product->variants[0]->stock,
                         'option1' => $product->variants[0]->option1,

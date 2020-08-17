@@ -15,6 +15,7 @@ class Variant extends Model
 
     protected $casts = [
         'price' => 'integer',
+        'original_price' => 'integer',
         'delivery_cost' => 'integer',
         'stock' => 'integer',
     ];
@@ -22,6 +23,7 @@ class Variant extends Model
     protected $fillable = [
         'name',
         'price',
+        'original_price',
         'delivery_cost',
         'stock',
         'option1',

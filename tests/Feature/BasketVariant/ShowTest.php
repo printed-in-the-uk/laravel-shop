@@ -68,6 +68,7 @@ class ShowTest extends TestCase
                     'name' => $basket->variants[0]->name,
                     'slug' => $basket->variants[0]->slug,
                     'price' => $basket->variants[0]->price,
+                    'original_price' => $basket->variants[0]->original_price,
                     'delivery_cost' => $basket->variants[0]->delivery_cost,
                     'stock' => $basket->variants[0]->stock,
                     'option1' => $basket->variants[0]->option1,
