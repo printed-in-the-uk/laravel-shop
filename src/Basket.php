@@ -3,6 +3,7 @@
 namespace Jskrd\Shop;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Jskrd\Shop\Traits\Identifiable;
@@ -16,6 +17,16 @@ class Basket extends Model
     ];
 
     protected $withCount = ['variants'];
+
+    public function billingAddress(): BelongsTo
+    {
+        return $this->belongsTo('Jskrd\Shop\Address');
+    }
+
+    public function deliveryAddress(): BelongsTo
+    {
+        return $this->belongsTo('Jskrd\Shop\Address');
+    }
 
     public function getSubtotalAttribute(): int
     {

@@ -28,6 +28,8 @@ class StoreTest extends TestCase
                     'id' => $basket->id,
                     'variants_count' => $basket->variants_count,
                     'subtotal' => $basket->subtotal,
+                    'delivery_address_id' => $basket->delivery_address_id,
+                    'billing_address_id' => $basket->billing_address_id,
                     'created_at' => $basket->created_at->toIso8601String(),
                     'updated_at' => $basket->updated_at->toIso8601String(),
                 ],

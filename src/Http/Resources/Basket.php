@@ -12,6 +12,8 @@ class Basket extends JsonResource
             'id' => $this->id,
             'variants_count' => $this->variants_count ?? 0,
             'subtotal' => $this->subtotal,
+            'billing_address_id' => $this->billing_address_id,
+            'delivery_address_id' => $this->delivery_address_id,
             'created_at' => $this->created_at->toIso8601String(),
             'updated_at' => $this->updated_at->toIso8601String(),
         ];

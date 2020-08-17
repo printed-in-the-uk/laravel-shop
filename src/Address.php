@@ -21,4 +21,14 @@ class Address extends Model
         'email',
         'phone',
     ];
+
+    public function basketBilling(): HasOne
+    {
+        return $this->hasOne('Jskrd\Shop\Basket', 'billing_address_id');
+    }
+
+    public function basketDelivery(): HasOne
+    {
+        return $this->hasOne('Jskrd\Shop\Basket', 'delivery_address_id');
+    }
 }
