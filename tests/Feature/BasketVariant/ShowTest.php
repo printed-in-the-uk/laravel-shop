@@ -70,6 +70,7 @@ class ShowTest extends TestCase
                     'price' => $basket->variants[0]->price,
                     'original_price' => $basket->variants[0]->original_price,
                     'delivery_cost' => $basket->variants[0]->delivery_cost,
+                    'sku' => $basket->variants[0]->sku,
                     'stock' => $basket->variants[0]->stock,
                     'option1' => $basket->variants[0]->option1,
                     'option2' => $basket->variants[0]->option2,

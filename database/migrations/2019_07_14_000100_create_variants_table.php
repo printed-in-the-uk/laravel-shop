@@ -15,6 +15,7 @@ class CreateVariantsTable extends Migration
             $table->unsignedInteger('price');
             $table->unsignedInteger('original_price')->nullable();
             $table->unsignedInteger('delivery_cost');
+            $table->string('sku')->unique();
             $table->unsignedInteger('stock')->nullable();
             $table->string('option1')->nullable();
             $table->string('option2')->nullable();

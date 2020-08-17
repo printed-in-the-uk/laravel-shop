@@ -25,6 +25,7 @@ class Variant extends Model
         'price',
         'original_price',
         'delivery_cost',
+        'sku',
         'stock',
         'option1',
         'option2',
