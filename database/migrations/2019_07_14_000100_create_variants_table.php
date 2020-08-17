@@ -10,14 +10,14 @@ class CreateVariantsTable extends Migration
     {
         Schema::create('variants', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name', 255);
-            $table->string('slug', 255)->unique();
+            $table->string('name');
+            $table->string('slug')->unique();
             $table->unsignedInteger('price');
             $table->unsignedInteger('delivery_cost');
             $table->unsignedInteger('stock')->nullable();
-            $table->string('option1', 255)->nullable();
-            $table->string('option2', 255)->nullable();
-            $table->string('option3', 255)->nullable();
+            $table->string('option1')->nullable();
+            $table->string('option2')->nullable();
+            $table->string('option3')->nullable();
             $table->uuid('product_id');
             $table->timestamps();
             $table->softDeletes();

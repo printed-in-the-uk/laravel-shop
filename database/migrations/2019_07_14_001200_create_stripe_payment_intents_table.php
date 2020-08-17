@@ -9,7 +9,7 @@ class CreateStripePaymentIntentsTable extends Migration
     public function up()
     {
         Schema::create('stripe_payment_intents', function (Blueprint $table) {
-            $table->string('id', 255)->primary();
+            $table->string('id')->primary();
             $table->timestamps();
         });
     }

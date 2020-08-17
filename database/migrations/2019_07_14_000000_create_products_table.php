@@ -10,11 +10,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name', 255);
-            $table->string('slug', 255)->unique();
-            $table->string('options1', 255)->nullable();
-            $table->string('options2', 255)->nullable();
-            $table->string('options3', 255)->nullable();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('options1')->nullable();
+            $table->string('options2')->nullable();
+            $table->string('options3')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('path', 255)->unique();
+            $table->string('path')->unique();
             $table->unsignedInteger('width');
             $table->unsignedInteger('height');
             $table->unsignedInteger('size');

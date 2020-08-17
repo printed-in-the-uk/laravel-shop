@@ -13,8 +13,8 @@ class CreateOrdersTable extends Migration
             $table->uuid('basket_id');
             $table->uuid('billing_address_id');
             $table->uuid('delivery_address_id');
-            $table->string('paymentable_id', 255)->unique();
-            $table->string('paymentable_type', 255);
+            $table->string('paymentable_id')->unique();
+            $table->string('paymentable_type');
             $table->timestamps();
 
             $table
