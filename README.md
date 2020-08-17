@@ -6,7 +6,15 @@
 
 - [Contents](#contents)
 - [About](#about)
+- [Design](#design)
+    - [Entity-Relationship Diagram](#entity-relationship-diagram)
 
 ## About
 
 A package for Laravel based projects providing a shop web API.
+
+## Design
+
+### Entity-Relationship Diagram
+
+![Image of Entity-Relationship Diagram](er-diagram.png)
