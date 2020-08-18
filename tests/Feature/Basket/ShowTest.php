@@ -47,8 +47,8 @@ class ShowTest extends TestCase
                     'delivery_address_id' => $basket->delivery_address_id,
                     'billing_address_id' => $basket->billing_address_id,
                     'discount_id' => $basket->discount_id,
-                    'created_at' => $basket->created_at->toIso8601String(),
-                    'updated_at' => $basket->updated_at->toIso8601String(),
+                    'created_at' => $basket->created_at->toISOString(),
+                    'updated_at' => $basket->updated_at->toISOString(),
                 ],
             ]);
     }

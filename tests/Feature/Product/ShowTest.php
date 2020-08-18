@@ -44,8 +44,8 @@ class ShowTest extends TestCase
                     'options1' => $product->options1,
                     'options2' => $product->options2,
                     'options3' => $product->options3,
-                    'created_at' => $product->created_at->toIso8601String(),
-                    'updated_at' => $product->updated_at->toIso8601String(),
+                    'created_at' => $product->created_at->toISOString(),
+                    'updated_at' => $product->updated_at->toISOString(),
                 ],
             ]);
     }

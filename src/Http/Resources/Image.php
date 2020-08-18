@@ -16,8 +16,8 @@ class Image extends JsonResource
             'width' => $this->width,
             'height' => $this->height,
             'size' => $this->size,
-            'created_at' => $this->created_at->toIso8601String(),
-            'updated_at' => $this->updated_at->toIso8601String(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
             'image_product' => $this->whenPivotLoaded(
                 'image_product',
                 function () {

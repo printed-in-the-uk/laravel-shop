@@ -410,8 +410,8 @@ class StoreTest extends TestCase
                     'country' => 'GB',
                     'email' => 'katherine@example.com',
                     'phone' => '078 0561 1288',
-                    'created_at' => $address->created_at->toIso8601String(),
-                    'updated_at' => $address->updated_at->toIso8601String(),
+                    'created_at' => $address->created_at->toISOString(),
+                    'updated_at' => $address->updated_at->toISOString(),
                 ],
             ]);
     }

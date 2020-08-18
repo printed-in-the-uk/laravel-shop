@@ -58,8 +58,8 @@ class IndexTest extends TestCase
                         'option2' => $product->variants[0]->option2,
                         'option3' => $product->variants[0]->option3,
                         'product_id' => $product->variants[0]->product_id,
-                        'created_at' => $product->variants[0]->created_at->toIso8601String(),
-                        'updated_at' => $product->variants[0]->updated_at->toIso8601String(),
+                        'created_at' => $product->variants[0]->created_at->toISOString(),
+                        'updated_at' => $product->variants[0]->updated_at->toISOString(),
                     ],
                 ],
             ]);

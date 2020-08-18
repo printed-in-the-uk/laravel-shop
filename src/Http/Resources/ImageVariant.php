@@ -12,8 +12,8 @@ class ImageVariant extends JsonResource
             'image_id' => $this->image_id,
             'variant_id' => $this->variant_id,
             'position' => $this->position,
-            'created_at' => $this->created_at->toIso8601String(),
-            'updated_at' => $this->updated_at->toIso8601String(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

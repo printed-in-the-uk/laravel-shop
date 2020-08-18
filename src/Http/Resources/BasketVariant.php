@@ -14,8 +14,8 @@ class BasketVariant extends JsonResource
             'customizations' => $this->customizations,
             'quantity' => $this->quantity,
             'price' => $this->price,
-            'created_at' => $this->created_at->toIso8601String(),
-            'updated_at' => $this->updated_at->toIso8601String(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
