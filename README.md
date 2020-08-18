@@ -15,6 +15,7 @@
         - [POST api/v1/baskets](#)
         - [GET api/v1/baskets/{basket}](#)
         - [PUT api/v1/baskets/{basket}](#)
+        - [DELETE api/v1/baskets/{basket}](#)
         - [GET api/v1/baskets/{basket}/variants](#)
         - [POST api/v1/baskets/{basket}/variants/{variant}](#)
         - [GET api/v1/baskets/{basket}/variants/{variant}](#)
