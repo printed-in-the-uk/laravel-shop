@@ -13,7 +13,6 @@ class Basket extends Model
     use Identifiable;
 
     protected $casts = [
-        'variants_count' => 'integer',
         'delivery_cost' => 'integer',
         'discount_amount' => 'integer',
     ];
@@ -22,8 +21,6 @@ class Basket extends Model
         'delivery_cost',
         'discount_amount',
     ];
-
-    protected $withCount = ['variants'];
 
     public function billingAddress(): BelongsTo
     {

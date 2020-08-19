@@ -23,24 +23,6 @@ class BasketTest extends TestCase
         $this->assertFalse($basket->incrementing);
     }
 
-    public function testWithCount(): void
-    {
-        $variants = factory(Variant::class, 5)->create();
-
-        $basket = factory(Basket::class)->create();
-        foreach ($variants as $variant) {
-            $basket->variants()->attach($variant, [
-                'customizations' => [],
-                'quantity' => 0,
-                'price' => 0,
-            ]);
-        }
-
-        $basket->refresh();
-
-        $this->assertSame(5, $basket->variants_count);
-    }
-
     public function testBillingAddress(): void
     {
         $billingAddress = factory(Address::class)->create();
