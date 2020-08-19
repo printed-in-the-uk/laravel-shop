@@ -4,21 +4,36 @@ namespace Tests\Feature\Address;
 
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Jskrd\Shop\Address;
 use Tests\TestCase;
 
-class StoreTest extends TestCase
+class UpdateTest extends TestCase
 {
     use RefreshDatabase;
 
     public function testRoute(): void
     {
-        $this->assertSame(url('/shop-api/addresses'), route('addresses.store'));
+        $id = Str::uuid();
+
+        $this->assertSame(
+            url('/shop-api/addresses/' . $id),
+            route('addresses.update', $id)
+        );
+    }
+
+    public function testNotFound(): void
+    {
+        $response = $this->putJson(route('addresses.update', Str::uuid()));
+
+        $response->assertNotFound();
     }
 
     public function testNameRequired(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'name' => '',
         ]);
 
@@ -31,7 +46,9 @@ class StoreTest extends TestCase
 
     public function testNameString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'name' => 123,
         ]);
 
@@ -44,7 +61,9 @@ class StoreTest extends TestCase
 
     public function testNameMax(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'name' => str_repeat('a', 256),
         ]);
 
@@ -57,7 +76,9 @@ class StoreTest extends TestCase
 
     public function testStreet1Required(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'street1' => '',
         ]);
 
@@ -70,7 +91,9 @@ class StoreTest extends TestCase
 
     public function testStreet1String(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'street1' => 123,
         ]);
 
@@ -83,7 +106,9 @@ class StoreTest extends TestCase
 
     public function testStreet1Max(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'street1' => str_repeat('a', 256),
         ]);
 
@@ -96,7 +121,9 @@ class StoreTest extends TestCase
 
     public function testStreet2Nullable(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'street2' => '',
         ]);
 
@@ -107,7 +134,9 @@ class StoreTest extends TestCase
 
     public function testStreet2String(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'street2' => 123,
         ]);
 
@@ -120,7 +149,9 @@ class StoreTest extends TestCase
 
     public function testStreet2Max(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'street2' => str_repeat('a', 256),
         ]);
 
@@ -133,7 +164,9 @@ class StoreTest extends TestCase
 
     public function testLocalityNullable(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'locality' => '',
         ]);
 
@@ -144,7 +177,9 @@ class StoreTest extends TestCase
 
     public function testLocalityString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'locality' => 123,
         ]);
 
@@ -157,7 +192,9 @@ class StoreTest extends TestCase
 
     public function testLocalityMax(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'locality' => str_repeat('a', 256),
         ]);
 
@@ -170,7 +207,9 @@ class StoreTest extends TestCase
 
     public function testRegionNullable(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'region' => '',
         ]);
 
@@ -181,7 +220,9 @@ class StoreTest extends TestCase
 
     public function testRegionString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'region' => 123,
         ]);
 
@@ -194,7 +235,9 @@ class StoreTest extends TestCase
 
     public function testRegionMax(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'region' => str_repeat('a', 256),
         ]);
 
@@ -207,7 +250,9 @@ class StoreTest extends TestCase
 
     public function testPostalCodeNullable(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'postal_code' => '',
         ]);
 
@@ -218,7 +263,9 @@ class StoreTest extends TestCase
 
     public function testPostalCodeString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'postal_code' => 123,
         ]);
 
@@ -231,7 +278,9 @@ class StoreTest extends TestCase
 
     public function testPostalCodeMax(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'postal_code' => str_repeat('a', 256),
         ]);
 
@@ -244,7 +293,9 @@ class StoreTest extends TestCase
 
     public function testCountryRequired(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'country' => '',
         ]);
 
@@ -257,7 +308,9 @@ class StoreTest extends TestCase
 
     public function testCountryString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'country' => 123,
         ]);
 
@@ -270,7 +323,9 @@ class StoreTest extends TestCase
 
     public function testCountrySize(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'country' => 'GBR',
         ]);
 
@@ -283,7 +338,9 @@ class StoreTest extends TestCase
 
     public function testCountryIn(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'country' => 'AA',
         ]);
 
@@ -296,7 +353,9 @@ class StoreTest extends TestCase
 
     public function testEmailNullable(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'email' => '',
         ]);
 
@@ -307,7 +366,9 @@ class StoreTest extends TestCase
 
     public function testEmailString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'email' => 123,
         ]);
 
@@ -320,7 +381,9 @@ class StoreTest extends TestCase
 
     public function testEmailEmail(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'email' => 'example.com',
         ]);
 
@@ -333,7 +396,9 @@ class StoreTest extends TestCase
 
     public function testEmailMax(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'email' => str_repeat('a', 244) . '@example.com',
         ]);
 
@@ -346,7 +411,9 @@ class StoreTest extends TestCase
 
     public function testPhoneNullable(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'phone' => '',
         ]);
 
@@ -357,7 +424,9 @@ class StoreTest extends TestCase
 
     public function testPhoneString(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'phone' => 123,
         ]);
 
@@ -370,7 +439,9 @@ class StoreTest extends TestCase
 
     public function testPhoneMax(): void
     {
-        $response = $this->postJson(route('addresses.store'), [
+        $address = factory(Address::class)->create();
+
+        $response = $this->putJson(route('addresses.update', $address), [
             'phone' => str_repeat('a', 256),
         ]);
 
@@ -381,8 +452,10 @@ class StoreTest extends TestCase
             ]);
     }
 
-    public function testStored(): void
+    public function testUpdated(): void
     {
+        $address = factory(Address::class)->create();
+
         $faker = Factory::create();
 
         $data = [
@@ -397,12 +470,10 @@ class StoreTest extends TestCase
             'phone' => $faker->e164PhoneNumber,
         ];
 
-        $response = $this->postJson(route('addresses.store'), $data);
-
-        $address = Address::first();
+        $response = $this->putJson(route('addresses.update', $address), $data);
 
         $response
-            ->assertStatus(201)
+            ->assertStatus(200)
             ->assertJsonFragment([
                 'data' => [
                     'id' => $address->id,

@@ -7,7 +7,7 @@ use League\ISO3166\ISO3166;
 
 class StoreAddress extends FormRequest
 {
-    public function rules()
+    public function rules(): array
     {
         $countries = array_column((new ISO3166())->all(), 'alpha2');
 

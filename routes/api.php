@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('addresses', 'AddressController')->only(['store']);
+Route::apiResource('addresses', 'AddressController')
+    ->only(['store', 'show', 'update', 'destroy']);
 
 Route::apiResource('baskets', 'BasketController')->only(['store', 'show']);
 
