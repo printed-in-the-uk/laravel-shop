@@ -43,6 +43,21 @@ class Basket extends Model
         return $subtotal;
     }
 
+    public function getTotalAttribute(): int
+    {
+        $total = $this->subtotal;
+
+        if ($this->discount_amount !== null) {
+            $total -= $this->discount_amount;
+        }
+
+        if ($this->delivery_cost !== null) {
+            $total += $this->delivery_cost;
+        }
+
+        return $total;
+    }
+
     public function order(): HasOne
     {
         return $this->hasOne('Jskrd\Shop\Order');
