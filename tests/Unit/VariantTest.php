@@ -15,7 +15,7 @@ class VariantTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIdentifiable(): void
+    public function testIdentifies(): void
     {
         $uuidPattern = '/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/';
 
@@ -25,7 +25,7 @@ class VariantTest extends TestCase
         $this->assertFalse($variant->incrementing);
     }
 
-    public function testSlugifiable(): void
+    public function testSlugifies(): void
     {
         $variant = factory(Variant::class)
             ->create(['name' => 'Notebook (Hardcover, Plain)']);

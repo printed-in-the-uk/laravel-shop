@@ -5,11 +5,11 @@ namespace Jskrd\Shop;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Jskrd\Shop\Traits\Identifiable;
+use Jskrd\Shop\Traits\Identifies;
 
 class Zone extends Model
 {
-    use Identifiable;
+    use Identifies;
 
     protected $fillable = [
         'name',

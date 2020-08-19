@@ -4,11 +4,11 @@ namespace Jskrd\Shop;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Jskrd\Shop\Traits\Identifiable;
+use Jskrd\Shop\Traits\Identifies;
 
 class Address extends Model
 {
-    use Identifiable;
+    use Identifies;
 
     protected $fillable = [
         'name',

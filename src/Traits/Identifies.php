@@ -4,16 +4,16 @@ namespace Jskrd\Shop\Traits;
 
 use Illuminate\Support\Str;
 
-trait Identifiable
+trait Identifies
 {
-    public static function bootIdentifiable(): void
+    public static function bootIdentifies(): void
     {
         static::creating(function ($model) {
             $model->{$model->getKeyName()} = (string) Str::uuid();
         });
     }
 
-    public function initializeIdentifiable(): void
+    public function initializeIdentifies(): void
     {
         $this->incrementing = false;
 

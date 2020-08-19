@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Jskrd\Shop\Traits\Identifiable;
+use Jskrd\Shop\Traits\Identifies;
 use Jskrd\Shop\Traits\Slugifiable;
 
 class Variant extends Model
 {
-    use Identifiable;
+    use Identifies;
     use Slugifiable;
 
     protected $casts = [
