@@ -13,13 +13,13 @@ class Basket extends Model
     use Identifiable;
 
     protected $casts = [
-        'delivery_cost' => 'integer',
         'discount_amount' => 'integer',
+        'delivery_cost' => 'integer',
     ];
 
     protected $fillable = [
-        'delivery_cost',
         'discount_amount',
+        'delivery_cost',
     ];
 
     public function billingAddress(): BelongsTo

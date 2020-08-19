@@ -10,12 +10,19 @@ class CreateBasketsTable extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedInteger('delivery_cost')->nullable();
             $table->unsignedInteger('discount_amount')->nullable();
+            $table->unsignedInteger('delivery_cost')->nullable();
+            $table->string('discount_id')->nullable();
             $table->uuid('billing_address_id')->nullable();
             $table->uuid('delivery_address_id')->nullable();
-            $table->string('discount_id')->nullable();
             $table->timestamps();
+
+            $table
+                ->foreign('discount_id')
+                ->references('id')
+                ->on('discounts')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
 
             $table
                 ->foreign('billing_address_id')
@@ -28,13 +35,6 @@ class CreateBasketsTable extends Migration
                 ->foreign('delivery_address_id')
                 ->references('id')
                 ->on('addresses')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
-
-            $table
-                ->foreign('discount_id')
-                ->references('id')
-                ->on('discounts')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
