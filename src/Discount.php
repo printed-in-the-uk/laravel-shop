@@ -4,19 +4,20 @@ namespace Jskrd\Shop;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Jskrd\Shop\Traits\Identifiable;
 
 class Discount extends Model
 {
-    use Identifiable;
-
     protected $fillable = [
+        'id',
         'name',
-        'code',
         'percent',
         'maximum',
         'limit',
     ];
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
 
     public function variant(): BelongsTo
     {

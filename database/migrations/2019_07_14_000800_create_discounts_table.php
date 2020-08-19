@@ -9,9 +9,8 @@ class CreateDiscountsTable extends Migration
     public function up()
     {
         Schema::create('discounts', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->string('id')->primary();
             $table->string('name');
-            $table->string('code')->unique();
             $table->unsignedInteger('percent');
             $table->unsignedInteger('maximum')->nullable();
             $table->unsignedInteger('limit')->nullable();
