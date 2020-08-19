@@ -22,7 +22,7 @@ class ProductTest extends TestCase
         $this->assertFalse($product->incrementing);
     }
 
-    public function testSlugifiable(): void
+    public function testSlugifies(): void
     {
         $product = factory(Product::class)->create(['name' => 'Notebook']);
 

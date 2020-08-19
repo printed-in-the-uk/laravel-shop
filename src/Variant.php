@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Jskrd\Shop\Traits\Identifies;
-use Jskrd\Shop\Traits\Slugifiable;
+use Jskrd\Shop\Traits\Slugifies;
 
 class Variant extends Model
 {
     use Identifies;
-    use Slugifiable;
+    use Slugifies;
 
     protected $casts = [
         'price' => 'integer',

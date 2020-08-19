@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Jskrd\Shop\Traits\Identifies;
-use Jskrd\Shop\Traits\Slugifiable;
+use Jskrd\Shop\Traits\Slugifies;
 
 class Product extends Model
 {
     use Identifies;
-    use Slugifiable;
+    use Slugifies;
 
     protected $fillable = [
         'name',

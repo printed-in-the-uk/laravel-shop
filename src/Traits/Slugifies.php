@@ -4,9 +4,9 @@ namespace Jskrd\Shop\Traits;
 
 use Illuminate\Support\Str;
 
-trait Slugifiable
+trait Slugifies
 {
-    public static function bootSlugifiable(): void
+    public static function bootSlugifies(): void
     {
         static::saving(function ($model) {
             $model->slug = Str::slug($model->name);
