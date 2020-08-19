@@ -48,6 +48,7 @@ class BasketTest extends TestCase
         $variants = factory(Variant::class, 2)->create();
 
         $basket = factory(Basket::class)->create();
+
         $basket->variants()->attach([
             $variants[0]->id => [
                 'customizations' => [],
