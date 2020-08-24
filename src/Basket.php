@@ -12,6 +12,11 @@ class Basket extends Model
 {
     use Identifies;
 
+    protected $attributes = [
+        'discount_amount' => 0,
+        'delivery_cost' => 0,
+    ];
+
     protected $casts = [
         'discount_amount' => 'integer',
         'delivery_cost' => 'integer',
@@ -50,17 +55,8 @@ class Basket extends Model
 
     public function getTotalAttribute(): int
     {
-        $total = $this->subtotal;
-
-        if ($this->discount_amount !== null) {
-            $total -= $this->discount_amount;
-        }
-
-        if ($this->delivery_cost !== null) {
-            $total += $this->delivery_cost;
-        }
-
-        return $total;
+        return ($this->subtotal - $this->discount_amount) +
+            $this->delivery_cost;
     }
 
     public function order(): HasOne

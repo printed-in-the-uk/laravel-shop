@@ -10,8 +10,8 @@ class CreateBasketsTable extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedInteger('discount_amount')->nullable();
-            $table->unsignedInteger('delivery_cost')->nullable();
+            $table->unsignedInteger('discount_amount');
+            $table->unsignedInteger('delivery_cost');
             $table->string('discount_id')->nullable();
             $table->uuid('billing_address_id')->nullable();
             $table->uuid('delivery_address_id')->nullable();
