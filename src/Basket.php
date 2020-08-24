@@ -32,6 +32,11 @@ class Basket extends Model
         return $this->belongsTo('Jskrd\Shop\Address');
     }
 
+    public function discount(): BelongsTo
+    {
+        return $this->belongsTo('Jskrd\Shop\Discount');
+    }
+
     public function getSubtotalAttribute(): int
     {
         $subtotal = 0;

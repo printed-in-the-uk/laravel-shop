@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Jskrd\Shop\Address;
 use Jskrd\Shop\Basket;
+use Jskrd\Shop\Discount;
 use Jskrd\Shop\Order;
 use Jskrd\Shop\Variant;
 use Tests\TestCase;
@@ -41,6 +42,16 @@ class BasketTest extends TestCase
         $basket->deliveryAddress()->associate($deliveryAddress);
 
         $this->assertSame($deliveryAddress->id, $basket->deliveryAddress->id);
+    }
+
+    public function testDiscount(): void
+    {
+        $discount = factory(Discount::class)->create();
+
+        $basket = factory(Basket::class)->create();
+        $basket->discount()->associate($discount);
+
+        $this->assertSame($discount->id, $basket->discount->id);
     }
 
     public function testGetSubtotalAttribute(): void
