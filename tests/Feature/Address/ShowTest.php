@@ -31,7 +31,6 @@ class ShowTest extends TestCase
     public function testShown(): void
     {
         $address = factory(Address::class)->create();
-        $address->refresh();
 
         $response = $this->getJson(route('addresses.show', $address));
 
