@@ -12,6 +12,11 @@
         - [Retrieve an existing Address](#retrieve-an-existing-address)
         - [Update an existing Address](#update-an-existing-address)
         - [Delete an existing Address](#delete-an-existing-address)
+    - [Basket](#basket)
+        - [Create a new Basket](#create-a-new-basket)
+        - [Retrieve an existing Basket](#retrieve-an-existing-basket)
+        - [Update an existing Basket](#update-an-existing-basket)
+        - [Delete an existing Basket](#delete-an-existing-basket)
 - [Design](#design)
     - [Entity-Relationship Diagram](#entity-relationship-diagram)
 
@@ -136,6 +141,106 @@ DELETE /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
     "country": "GB",
     "email": "elliot.moore@example.com",
     "phone": "08455 296005",
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:58:51.612584Z"
+}
+```
+
+### Basket
+
+#### Create a new Basket
+
+```
+POST /shop-api/baskets
+{
+    "discount_id": null,
+    "billing_address_id": null,
+    "delivery_address_id": null
+}
+```
+
+```
+201 Created
+{
+    "id": "26a1123f-4565-495c-8da5-8286a608a037,
+    "subtotal": 5235,
+    "discount_amount": 0,
+    "delivery_cost": 0,
+    "total": 5235,
+    "discount_id": null,
+    "billing_address_id": null,
+    "delivery_address_id": null
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:45:27.612584Z"
+}
+```
+
+#### Retrieve an existing Basket
+
+```
+GET /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
+```
+
+```
+200 OK
+{
+    "id": "26a1123f-4565-495c-8da5-8286a608a037,
+    "subtotal": 5235,
+    "discount_amount": 0,
+    "delivery_cost": 0,
+    "total": 5235,
+    "discount_id": null,
+    "billing_address_id": null,
+    "delivery_address_id": null
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:45:27.612584Z"
+}
+```
+
+#### Update an existing Basket
+
+```
+PUT /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
+{
+    "discount_id": "voluptatem",
+    "billing_address_id": "c82509df-f5f5-4665-ad1d-b70ed4675246",
+    "delivery_address_id": "a16525ae-fd54-4e73-9704-f9872bdcb7c5"
+}
+```
+
+```
+200 OK
+{
+    "id": "26a1123f-4565-495c-8da5-8286a608a037",
+    "subtotal": 5235,
+    "discount_amount": 500,
+    "delivery_cost": 826,
+    "total": 5561,
+    "discount_id": "voluptatem",
+    "billing_address_id": "c82509df-f5f5-4665-ad1d-b70ed4675246",
+    "delivery_address_id": "a16525ae-fd54-4e73-9704-f9872bdcb7c5"
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:58:51.612584Z"
+}
+```
+
+#### Delete an existing Basket
+
+```
+DELETE /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
+```
+
+```
+200 OK
+{
+    "id": "26a1123f-4565-495c-8da5-8286a608a037",
+    "subtotal": 5235,
+    "discount_amount": 500,
+    "delivery_cost": 826,
+    "total": 5561,
+    "discount_id": "voluptatem",
+    "billing_address_id": "c82509df-f5f5-4665-ad1d-b70ed4675246",
+    "delivery_address_id": "a16525ae-fd54-4e73-9704-f9872bdcb7c5"
     "created_at": "2019-02-01T03:45:27.612584Z",
     "updated_at": "2019-02-01T03:58:51.612584Z"
 }
