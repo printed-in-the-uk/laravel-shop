@@ -18,56 +18,6 @@ class StoreTest extends TestCase
         $this->assertSame(url('/shop-api/baskets'), route('baskets.store'));
     }
 
-    public function testDiscountIdNullable(): void
-    {
-        $response = $this->postJson(route('baskets.store'), [
-            'discount_id' => '',
-        ]);
-
-        $response
-            ->assertStatus(201)
-            ->assertJsonMissingValidationErrors('discount_id');
-    }
-
-    public function testDiscountIdString(): void
-    {
-        $response = $this->postJson(route('baskets.store'), [
-            'discount_id' => 1,
-        ]);
-
-        $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'discount_id' => 'The discount id must be a string.'
-            ]);
-    }
-
-    public function testDiscountIdMax(): void
-    {
-        $response = $this->postJson(route('baskets.store'), [
-            'discount_id' => str_repeat('a', 256),
-        ]);
-
-        $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'discount_id' => 'The discount id may not be greater than 255 characters.'
-            ]);
-    }
-
-    public function testDiscountIdExists(): void
-    {
-        $response = $this->postJson(route('baskets.store'), [
-            'discount_id' => Str::random(10),
-        ]);
-
-        $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'discount_id' => 'The selected discount id is invalid.'
-            ]);
-    }
-
     public function testBillingAddressIdNullable(): void
     {
         $response = $this->postJson(route('baskets.store'), [
@@ -168,6 +118,56 @@ class StoreTest extends TestCase
             ]);
     }
 
+    public function testDiscountIdNullable(): void
+    {
+        $response = $this->postJson(route('baskets.store'), [
+            'discount_id' => '',
+        ]);
+
+        $response
+            ->assertStatus(201)
+            ->assertJsonMissingValidationErrors('discount_id');
+    }
+
+    public function testDiscountIdString(): void
+    {
+        $response = $this->postJson(route('baskets.store'), [
+            'discount_id' => 1,
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'discount_id' => 'The discount id must be a string.'
+            ]);
+    }
+
+    public function testDiscountIdMax(): void
+    {
+        $response = $this->postJson(route('baskets.store'), [
+            'discount_id' => str_repeat('a', 256),
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'discount_id' => 'The discount id may not be greater than 255 characters.'
+            ]);
+    }
+
+    public function testDiscountIdExists(): void
+    {
+        $response = $this->postJson(route('baskets.store'), [
+            'discount_id' => Str::random(10),
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'discount_id' => 'The selected discount id is invalid.'
+            ]);
+    }
+
     public function testStored(): void
     {
         $discount = factory(Discount::class)->create();
@@ -175,9 +175,9 @@ class StoreTest extends TestCase
         $deliveryAddress = factory(Address::class)->create();
 
         $response = $this->postJson(route('baskets.store'), [
-            'discount_id' => $discount->id,
             'billing_address_id' => $billingAddress->id,
             'delivery_address_id' => $deliveryAddress->id,
+            'discount_id' => $discount->id,
         ]);
 
         $basket = Basket::first();
@@ -191,9 +191,9 @@ class StoreTest extends TestCase
                     'discount_amount' => $basket->discount_amount,
                     'delivery_cost' => $basket->delivery_cost,
                     'total' => $basket->total,
-                    'discount_id' => $discount->id,
                     'billing_address_id' => $billingAddress->id,
                     'delivery_address_id' => $deliveryAddress->id,
+                    'discount_id' => $discount->id,
                     'created_at' => $basket->created_at->toISOString(),
                     'updated_at' => $basket->updated_at->toISOString(),
                 ],

@@ -153,9 +153,9 @@ DELETE /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
 ```
 POST /shop-api/baskets
 {
-    "discount_id": null,
     "billing_address_id": null,
     "delivery_address_id": null
+    "discount_id": null,
 }
 ```
 
@@ -167,9 +167,9 @@ POST /shop-api/baskets
     "discount_amount": 0,
     "delivery_cost": 0,
     "total": 5235,
-    "discount_id": null,
     "billing_address_id": null,
     "delivery_address_id": null
+    "discount_id": null,
     "created_at": "2019-02-01T03:45:27.612584Z",
     "updated_at": "2019-02-01T03:45:27.612584Z"
 }
@@ -189,9 +189,9 @@ GET /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
     "discount_amount": 0,
     "delivery_cost": 0,
     "total": 5235,
-    "discount_id": null,
     "billing_address_id": null,
     "delivery_address_id": null
+    "discount_id": null,
     "created_at": "2019-02-01T03:45:27.612584Z",
     "updated_at": "2019-02-01T03:45:27.612584Z"
 }
@@ -202,9 +202,9 @@ GET /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
 ```
 PUT /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
 {
-    "discount_id": "voluptatem",
     "billing_address_id": "c82509df-f5f5-4665-ad1d-b70ed4675246",
     "delivery_address_id": "a16525ae-fd54-4e73-9704-f9872bdcb7c5"
+    "discount_id": "voluptatem",
 }
 ```
 
@@ -216,9 +216,9 @@ PUT /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
     "discount_amount": 500,
     "delivery_cost": 826,
     "total": 5561,
-    "discount_id": "voluptatem",
     "billing_address_id": "c82509df-f5f5-4665-ad1d-b70ed4675246",
     "delivery_address_id": "a16525ae-fd54-4e73-9704-f9872bdcb7c5"
+    "discount_id": "voluptatem",
     "created_at": "2019-02-01T03:45:27.612584Z",
     "updated_at": "2019-02-01T03:58:51.612584Z"
 }
@@ -238,9 +238,9 @@ DELETE /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
     "discount_amount": 500,
     "delivery_cost": 826,
     "total": 5561,
-    "discount_id": "voluptatem",
     "billing_address_id": "c82509df-f5f5-4665-ad1d-b70ed4675246",
     "delivery_address_id": "a16525ae-fd54-4e73-9704-f9872bdcb7c5"
+    "discount_id": "voluptatem",
     "created_at": "2019-02-01T03:45:27.612584Z",
     "updated_at": "2019-02-01T03:58:51.612584Z"
 }

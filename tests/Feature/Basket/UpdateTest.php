@@ -30,64 +30,6 @@ class UpdateTest extends TestCase
         $response->assertNotFound();
     }
 
-    public function testDiscountIdNullable(): void
-    {
-        $basket = factory(Basket::class)->create();
-
-        $response = $this->putJson(route('baskets.update', $basket), [
-            'discount_id' => '',
-        ]);
-
-        $response
-            ->assertStatus(200)
-            ->assertJsonMissingValidationErrors('discount_id');
-    }
-
-    public function testDiscountIdString(): void
-    {
-        $basket = factory(Basket::class)->create();
-
-        $response = $this->putJson(route('baskets.update', $basket), [
-            'discount_id' => 1,
-        ]);
-
-        $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'discount_id' => 'The discount id must be a string.'
-            ]);
-    }
-
-    public function testDiscountIdMax(): void
-    {
-        $basket = factory(Basket::class)->create();
-
-        $response = $this->putJson(route('baskets.update', $basket), [
-            'discount_id' => str_repeat('a', 256),
-        ]);
-
-        $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'discount_id' => 'The discount id may not be greater than 255 characters.'
-            ]);
-    }
-
-    public function testDiscountIdExists(): void
-    {
-        $basket = factory(Basket::class)->create();
-
-        $response = $this->putJson(route('baskets.update', $basket), [
-            'discount_id' => Str::random(10),
-        ]);
-
-        $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'discount_id' => 'The selected discount id is invalid.'
-            ]);
-    }
-
     public function testBillingAddressIdNullable(): void
     {
         $basket = factory(Basket::class)->create();
@@ -204,6 +146,64 @@ class UpdateTest extends TestCase
             ]);
     }
 
+    public function testDiscountIdNullable(): void
+    {
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
+            'discount_id' => '',
+        ]);
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonMissingValidationErrors('discount_id');
+    }
+
+    public function testDiscountIdString(): void
+    {
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
+            'discount_id' => 1,
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'discount_id' => 'The discount id must be a string.'
+            ]);
+    }
+
+    public function testDiscountIdMax(): void
+    {
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
+            'discount_id' => str_repeat('a', 256),
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'discount_id' => 'The discount id may not be greater than 255 characters.'
+            ]);
+    }
+
+    public function testDiscountIdExists(): void
+    {
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
+            'discount_id' => Str::random(10),
+        ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'discount_id' => 'The selected discount id is invalid.'
+            ]);
+    }
+
     public function testStored(): void
     {
         $basket = factory(Basket::class)->create();
@@ -213,9 +213,9 @@ class UpdateTest extends TestCase
         $deliveryAddress = factory(Address::class)->create();
 
         $response = $this->putJson(route('baskets.update', $basket), [
-            'discount_id' => $discount->id,
             'billing_address_id' => $billingAddress->id,
             'delivery_address_id' => $deliveryAddress->id,
+            'discount_id' => $discount->id,
         ]);
 
         $basket = Basket::first();
@@ -229,9 +229,9 @@ class UpdateTest extends TestCase
                     'discount_amount' => $basket->discount_amount,
                     'delivery_cost' => $basket->delivery_cost,
                     'total' => $basket->total,
-                    'discount_id' => $discount->id,
                     'billing_address_id' => $billingAddress->id,
                     'delivery_address_id' => $deliveryAddress->id,
+                    'discount_id' => $discount->id,
                     'created_at' => $basket->created_at->toISOString(),
                     'updated_at' => $basket->updated_at->toISOString(),
                 ],
