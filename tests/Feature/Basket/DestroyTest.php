@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Jskrd\Shop\Basket;
 use Tests\TestCase;
 
-class ShowTest extends TestCase
+class DestroyTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -17,22 +17,22 @@ class ShowTest extends TestCase
 
         $this->assertSame(
             url('/shop-api/baskets/' . $id),
-            route('baskets.show', $id)
+            route('baskets.destroy', $id)
         );
     }
 
     public function testNotFound(): void
     {
-        $response = $this->getJson(route('baskets.show', Str::uuid()));
+        $response = $this->deleteJson(route('baskets.destroy', Str::uuid()));
 
         $response->assertNotFound();
     }
 
-    public function testShown(): void
+    public function testDestroyed(): void
     {
         $basket = factory(Basket::class)->create();
 
-        $response = $this->getJson(route('baskets.show', $basket));
+        $response = $this->deleteJson(route('baskets.destroy', $basket));
 
         $response
             ->assertStatus(200)
@@ -50,5 +50,7 @@ class ShowTest extends TestCase
                     'updated_at' => $basket->updated_at->toISOString(),
                 ],
             ]);
+
+        $this->assertNull($basket->fresh());
     }
 }

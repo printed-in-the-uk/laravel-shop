@@ -9,29 +9,45 @@ use Jskrd\Shop\Basket;
 use Jskrd\Shop\Discount;
 use Tests\TestCase;
 
-class StoreTest extends TestCase
+class UpdateTest extends TestCase
 {
     use RefreshDatabase;
 
     public function testRoute(): void
     {
-        $this->assertSame(url('/shop-api/baskets'), route('baskets.store'));
+        $id = Str::uuid();
+
+        $this->assertSame(
+            url('/shop-api/baskets/' . $id),
+            route('baskets.update', $id)
+        );
+    }
+
+    public function testNotFound(): void
+    {
+        $response = $this->putJson(route('baskets.update', Str::uuid()));
+
+        $response->assertNotFound();
     }
 
     public function testDiscountIdNullable(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'discount_id' => '',
         ]);
 
         $response
-            ->assertStatus(201)
+            ->assertStatus(200)
             ->assertJsonMissingValidationErrors('discount_id');
     }
 
     public function testDiscountIdString(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'discount_id' => 1,
         ]);
 
@@ -44,7 +60,9 @@ class StoreTest extends TestCase
 
     public function testDiscountIdMax(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'discount_id' => str_repeat('a', 256),
         ]);
 
@@ -57,7 +75,9 @@ class StoreTest extends TestCase
 
     public function testDiscountIdExists(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'discount_id' => Str::random(10),
         ]);
 
@@ -70,18 +90,22 @@ class StoreTest extends TestCase
 
     public function testBillingAddressIdNullable(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'billing_address_id' => '',
         ]);
 
         $response
-            ->assertStatus(201)
+            ->assertStatus(200)
             ->assertJsonMissingValidationErrors('billing_address_id');
     }
 
     public function testBillingAddressIdString(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'billing_address_id' => 1,
         ]);
 
@@ -94,7 +118,9 @@ class StoreTest extends TestCase
 
     public function testBillingAddressIdUuid(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'billing_address_id' => '1',
         ]);
 
@@ -107,7 +133,9 @@ class StoreTest extends TestCase
 
     public function testBillingAddressIdExists(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'billing_address_id' => Str::uuid(),
         ]);
 
@@ -120,18 +148,22 @@ class StoreTest extends TestCase
 
     public function testDeliveryAddressIdNullable(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'delivery_address_id' => '',
         ]);
 
         $response
-            ->assertStatus(201)
+            ->assertStatus(200)
             ->assertJsonMissingValidationErrors('delivery_address_id');
     }
 
     public function testDeliveryAddressIdString(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'delivery_address_id' => 1,
         ]);
 
@@ -144,7 +176,9 @@ class StoreTest extends TestCase
 
     public function testDeliveryAddressIdUuid(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'delivery_address_id' => '1',
         ]);
 
@@ -157,7 +191,9 @@ class StoreTest extends TestCase
 
     public function testDeliveryAddressIdExists(): void
     {
-        $response = $this->postJson(route('baskets.store'), [
+        $basket = factory(Basket::class)->create();
+
+        $response = $this->putJson(route('baskets.update', $basket), [
             'delivery_address_id' => Str::uuid(),
         ]);
 
@@ -170,11 +206,13 @@ class StoreTest extends TestCase
 
     public function testStored(): void
     {
+        $basket = factory(Basket::class)->create();
+
         $discount = factory(Discount::class)->create();
         $billingAddress = factory(Address::class)->create();
         $deliveryAddress = factory(Address::class)->create();
 
-        $response = $this->postJson(route('baskets.store'), [
+        $response = $this->putJson(route('baskets.update', $basket), [
             'discount_id' => $discount->id,
             'billing_address_id' => $billingAddress->id,
             'delivery_address_id' => $deliveryAddress->id,
@@ -183,7 +221,7 @@ class StoreTest extends TestCase
         $basket = Basket::first();
 
         $response
-            ->assertStatus(201)
+            ->assertStatus(200)
             ->assertJsonFragment([
                 'data' => [
                     'id' => $basket->id,
