@@ -5,18 +5,19 @@ namespace Jskrd\Shop;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Jskrd\Shop\Traits\Identifies;
 
 class Discount extends Model
 {
+    use Identifies;
+
     protected $fillable = [
-        'id',
         'name',
+        'code',
         'percent',
         'maximum',
         'limit',
     ];
-
-    public $incrementing = false;
 
     protected $keyType = 'string';
 

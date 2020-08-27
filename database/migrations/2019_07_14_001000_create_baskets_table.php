@@ -14,7 +14,7 @@ class CreateBasketsTable extends Migration
             $table->unsignedInteger('delivery_cost');
             $table->uuid('billing_address_id')->nullable();
             $table->uuid('delivery_address_id')->nullable();
-            $table->string('discount_id')->nullable();
+            $table->uuid('discount_id')->nullable();
             $table->timestamps();
 
             $table
