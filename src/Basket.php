@@ -23,8 +23,9 @@ class Basket extends Model
     ];
 
     protected $fillable = [
-        'discount_amount',
-        'delivery_cost',
+        'billing_address_id',
+        'delivery_address_id',
+        'discount_id',
     ];
 
     public function billingAddress(): BelongsTo

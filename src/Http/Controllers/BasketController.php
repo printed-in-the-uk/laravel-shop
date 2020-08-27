@@ -15,11 +15,7 @@ class BasketController extends Controller
     {
         $validated = $request->validated();
 
-        $basket = Basket::make();
-        $basket->billing_address_id = $validated['billing_address_id'] ?? null;
-        $basket->delivery_address_id = $validated['delivery_address_id'] ?? null;
-        $basket->discount_id = $validated['discount_id'] ?? null;
-        $basket->save();
+        $basket = Basket::create($validated);
 
         return new BasketResource($basket);
     }
@@ -33,10 +29,7 @@ class BasketController extends Controller
     {
         $validated = $request->validated();
 
-        $basket->billing_address_id = $validated['billing_address_id'] ?? null;
-        $basket->delivery_address_id = $validated['delivery_address_id'] ?? null;
-        $basket->discount_id = $validated['discount_id'] ?? null;
-        $basket->save();
+        $basket->update($validated);
 
         return new BasketResource($basket);
     }
