@@ -24,6 +24,14 @@ class BasketTest extends TestCase
         $this->assertFalse($basket->incrementing);
     }
 
+    public function testAttributes(): void
+    {
+        $basket = Basket::create();
+
+        $this->assertSame(0, $basket->discount_amount);
+        $this->assertSame(0, $basket->delivery_cost);
+    }
+
     public function testBillingAddress(): void
     {
         $billingAddress = factory(Address::class)->create();
