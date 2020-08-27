@@ -6,50 +6,140 @@
 
 - [Contents](#contents)
 - [About](#about)
+- [REST API reference](#api-endpoints)
+    - [Address](#address)
+        - [Create a new Address](#create-a-new-address)
+        - [Retrieve an existing Address](#retrieve-an-existing-address)
+        - [Update an existing Address](#update-an-existing-address)
+        - [Delete an existing Address](#delete-an-existing-address)
 - [Design](#design)
-    - [API Endpoints](#api-endpoints)
-        - [POST /shop-api/addresses](#)
-        - [GET /shop-api/addresses/{address}](#)
-        - [PUT /shop-api/addresses/{address}](#)
-        - [DELETE /shop-api/addresses/{address}](#)
-        - [POST /shop-api/baskets](#)
-        - [GET /shop-api/baskets/{basket}](#)
-        - [PUT /shop-api/baskets/{basket}](#)
-        - [DELETE /shop-api/baskets/{basket}](#)
-        - [GET /shop-api/baskets/{basket}/variants](#)
-        - [POST /shop-api/baskets/{basket}/variants/{variant}](#)
-        - [GET /shop-api/baskets/{basket}/variants/{variant}](#)
-        - [PUT /shop-api/baskets/{basket}/variants/{variant}](#)
-        - [DELETE /shop-api/baskets/{basket}/variants/{variant}](#)
-        - [GET /shop-api/countries](#)
-        - [GET /shop-api/countries/{country}](#)
-        - [GET /shop-api/discounts/{discount}](#)
-        - [GET /shop-api/images](#)
-        - [GET /shop-api/images/{image}](#)
-        - [GET /shop-api/images/{image}/products](#)
-        - [GET /shop-api/images/{image}/products/{product}](#)
-        - [GET /shop-api/images/{image}/variants](#)
-        - [GET /shop-api/images/{image}/variants/{variant}](#)
-        - [GET /shop-api/products](#)
-        - [GET /shop-api/products/{product}](#)
-        - [GET /shop-api/products/{product}/images](#)
-        - [GET /shop-api/products/{product}/variants](#)
-        - [POST /shop-api/orders](#)
-        - [GET /shop-api/orders/{order}](#)
-        - [GET /shop-api/variants](#)
-        - [GET /shop-api/variants/{variant}](#)
-        - [GET /shop-api/variants/{variant}/images](#)
-        - [GET /shop-api/variants/{variant}/zones](#)
-        - [GET /shop-api/variants/{variant}/zones/{zone}](#)
-        - [GET /shop-api/zones/](#)
-        - [GET /shop-api/zones/{zone}](#)
-        - [GET /shop-api/zones/{zone}/countries](#)
-        - [GET /shop-api/zones/{zone}/variants](#)
     - [Entity-Relationship Diagram](#entity-relationship-diagram)
 
 ## About
 
 A package for Laravel based projects providing a shop web API.
+
+## REST API reference
+
+### Address
+
+#### Create a new Address
+
+```
+POST /shop-api/addresses
+{
+    "name": "Lysanne Durgan",
+    "street1": "86897 Ebony Park",
+    "street2": "Suite 451",
+    "locality": "South Antoniabury",
+    "region": "South Carolina",
+    "postal_code": "33547",
+    "country": "US",
+    "email": "lysanne.durgan@example.com",
+    "phone": "1-594-781-8825"
+}
+```
+
+```
+201 Created
+{
+    "id": "5384d0d7-d372-42c2-8f41-8a0f6f3ee023",
+    "name": "Lysanne Durgan",
+    "street1": "86897 Ebony Park",
+    "street2": "Suite 451",
+    "locality": "South Antoniabury",
+    "region": "South Carolina",
+    "postal_code": "33547",
+    "country": "US",
+    "email": "lysanne.durgan@example.com",
+    "phone": "1-594-781-8825",
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:45:27.612584Z"
+}
+```
+
+#### Retrieve an existing Address
+
+```
+GET /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
+```
+
+```
+200 OK
+{
+    "id": "5384d0d7-d372-42c2-8f41-8a0f6f3ee023",
+    "name": "Lysanne Durgan",
+    "street1": "86897 Ebony Park",
+    "street2": "Suite 451",
+    "locality": "South Antoniabury",
+    "region": "South Carolina",
+    "postal_code": "33547",
+    "country": "US",
+    "email": "lysanne.durgan@example.com",
+    "phone": "1-594-781-8825",
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:45:27.612584Z"
+}
+```
+
+#### Update an existing Address
+
+```
+PUT /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
+{
+    "name": "Elliot Moore",
+    "street1": "0 Morgan Cove",
+    "street2": "Flat 43",
+    "locality": "South Johnshire",
+    "region": "Peebleshire",
+    "postal_code": "BL7 8BW",
+    "country": "GB",
+    "email": "elliot.moore@example.com",
+    "phone": "08455 296005",
+}
+```
+
+```
+200 OK
+{
+    "id": "5384d0d7-d372-42c2-8f41-8a0f6f3ee023",
+    "name": "Elliot Moore",
+    "street1": "0 Morgan Cove",
+    "street2": "Flat 43",
+    "locality": "South Johnshire",
+    "region": "Peebleshire",
+    "postal_code": "BL7 8BW",
+    "country": "GB",
+    "email": "elliot.moore@example.com",
+    "phone": "08455 296005",
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:58:51.612584Z"
+}
+```
+
+#### Delete an existing Address
+
+```
+DELETE /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
+```
+
+```
+200 OK
+{
+    "id": "5384d0d7-d372-42c2-8f41-8a0f6f3ee023",
+    "name": "Elliot Moore",
+    "street1": "0 Morgan Cove",
+    "street2": "Flat 43",
+    "locality": "South Johnshire",
+    "region": "Peebleshire",
+    "postal_code": "BL7 8BW",
+    "country": "GB",
+    "email": "elliot.moore@example.com",
+    "phone": "08455 296005",
+    "created_at": "2019-02-01T03:45:27.612584Z",
+    "updated_at": "2019-02-01T03:58:51.612584Z"
+}
+```
 
 ## Design
 
