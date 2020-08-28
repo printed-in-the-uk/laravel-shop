@@ -6,6 +6,8 @@
 
 - [Contents](#contents)
 - [About](#about)
+- [Database](#database)
+    - [Entity-Relationship Diagram](#entity-relationship-diagram)
 - [REST API](#rest-api)
     - [Address](#address)
         - [Create a new Address](#create-a-new-address)
@@ -23,6 +25,12 @@
 ## About
 
 A package for Laravel based projects providing a shop web API.
+
+## Database
+
+### Entity-Relationship Diagram
+
+![Image of Entity-Relationship Diagram](er-diagram.png)
 
 ## REST API
 
