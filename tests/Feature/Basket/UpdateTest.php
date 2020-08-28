@@ -204,7 +204,7 @@ class UpdateTest extends TestCase
             ]);
     }
 
-    public function testStored(): void
+    public function testUpdated(): void
     {
         $basket = factory(Basket::class)->create();
 
