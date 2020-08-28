@@ -10,15 +10,15 @@
     - [Entity-Relationship Diagram](#entity-relationship-diagram)
 - [REST API](#rest-api)
     - [Address](#address)
-        - [Create a new Address](#create-a-new-address)
-        - [Retrieve an existing Address](#retrieve-an-existing-address)
-        - [Update an existing Address](#update-an-existing-address)
-        - [Delete an existing Address](#delete-an-existing-address)
+        - [Create an address](#create-an-address)
+        - [Retrieve an address](#retrieve-an-address)
+        - [Update an address](#update-an-address)
+        - [Delete an address](#delete-an-address)
     - [Basket](#basket)
-        - [Create a new Basket](#create-a-new-basket)
-        - [Retrieve an existing Basket](#retrieve-an-existing-basket)
-        - [Update an existing Basket](#update-an-existing-basket)
-        - [Delete an existing Basket](#delete-an-existing-basket)
+        - [Create a basket](#create-an-basket)
+        - [Retrieve a basket](#retrieve-an-basket)
+        - [Update a basket](#update-an-basket)
+        - [Delete a basket](#delete-an-basket)
 - [Database](#database)
     - [Entity-Relationship Diagram](#entity-relationship-diagram)
 
@@ -36,7 +36,7 @@ A package for Laravel based projects providing a shop web API.
 
 ### Address
 
-#### Create a new Address
+#### Create an address
 
 ```
 POST /shop-api/addresses
@@ -71,7 +71,7 @@ POST /shop-api/addresses
 }
 ```
 
-#### Retrieve an existing Address
+#### Retrieve an address
 
 ```
 GET /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
@@ -95,7 +95,7 @@ GET /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
 }
 ```
 
-#### Update an existing Address
+#### Update an address
 
 ```
 PUT /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
@@ -130,7 +130,7 @@ PUT /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
 }
 ```
 
-#### Delete an existing Address
+#### Delete an address
 
 ```
 DELETE /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
@@ -156,7 +156,7 @@ DELETE /shop-api/addresses/5384d0d7-d372-42c2-8f41-8a0f6f3ee023
 
 ### Basket
 
-#### Create a new Basket
+#### Create a basket
 
 ```
 POST /shop-api/baskets
@@ -183,7 +183,7 @@ POST /shop-api/baskets
 }
 ```
 
-#### Retrieve an existing Basket
+#### Retrieve a basket
 
 ```
 GET /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
@@ -205,7 +205,7 @@ GET /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
 }
 ```
 
-#### Update an existing Basket
+#### Update a basket
 
 ```
 PUT /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
@@ -232,7 +232,7 @@ PUT /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
 }
 ```
 
-#### Delete an existing Basket
+#### Delete a basket
 
 ```
 DELETE /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
