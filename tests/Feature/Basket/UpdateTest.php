@@ -218,8 +218,6 @@ class UpdateTest extends TestCase
             'discount_id' => $discount->id,
         ]);
 
-        $basket = Basket::first();
-
         $response
             ->assertStatus(200)
             ->assertJsonFragment([
