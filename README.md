@@ -6,7 +6,7 @@
 
 - [Contents](#contents)
 - [About](#about)
-- [REST API reference](#api-endpoints)
+- [REST API](#rest-api)
     - [Address](#address)
         - [Create a new Address](#create-a-new-address)
         - [Retrieve an existing Address](#retrieve-an-existing-address)
@@ -24,7 +24,7 @@
 
 A package for Laravel based projects providing a shop web API.
 
-## REST API reference
+## REST API
 
 ### Address
 
