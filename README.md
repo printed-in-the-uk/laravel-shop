@@ -17,7 +17,7 @@
         - [Retrieve an existing Basket](#retrieve-an-existing-basket)
         - [Update an existing Basket](#update-an-existing-basket)
         - [Delete an existing Basket](#delete-an-existing-basket)
-- [Design](#design)
+- [Database](#database)
     - [Entity-Relationship Diagram](#entity-relationship-diagram)
 
 ## About
@@ -246,7 +246,7 @@ DELETE /shop-api/baskets/26a1123f-4565-495c-8da5-8286a608a037
 }
 ```
 
-## Design
+## Database
 
 ### Entity-Relationship Diagram
 
